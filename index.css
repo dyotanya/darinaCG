@@ -1,0 +1,3 @@
+[data-animation=scroll-zoom]{transform:scale(var(--zoom, 1))}
+.cursor-canvas{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:99999;pointer-events:none;mix-blend-mode:difference}
+:root{--yellow: #FBF5E7;--red: #B64B37;--black: #353636}
