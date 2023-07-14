@@ -1,27 +1,3 @@
-/*!***********************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/zoomingPhotos/style.scss ***!
-  \***********************************************************************************************************************/
-[data-animation=scroll-zoom] {
-  transform: scale(var(--zoom, 1));
-}
-/*!****************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/cursor/style.scss ***!
-  \****************************************************************************************************************/
-.cursor-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 99999;
-  pointer-events: none;
-  mix-blend-mode: difference;
-}
-/*!*********************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/common.css ***!
-  \*********************************************************************************************************/
-:root {
-  --yellow: #FBF5E7;
-  --red: #B64B37;
-  --black: #353636;
-}
+[data-animation=scroll-zoom]{transform:scale(var(--zoom, 1))}
+.cursor-canvas{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:99999;pointer-events:none;mix-blend-mode:difference}
+:root{--yellow: #FBF5E7;--red: #B64B37;--black: #353636}
