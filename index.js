@@ -1,11 +1,13 @@
 import { useZomingPhotos } from "./src/zoomingPhotos/script";
 import { useGlitch } from "./src/glitch/script";
+import { useScrollColors } from "./src/colors/script";
 import SmoothScroll from "smoothscroll-for-websites";
 import { useCursor } from "./src/cursor/script";
 import './src/common.css';
 
 if (!window.isCustomCodeInitialized) {
     useZomingPhotos();
+    useScrollColors();
     useGlitch();
     useCursor();
     SmoothScroll({

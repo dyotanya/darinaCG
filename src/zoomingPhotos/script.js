@@ -9,18 +9,25 @@ export function useZomingPhotos() {
     images.forEach((image) => observer.observe(image));
 
     const watching = new Set([]);
-
-    document.addEventListener('scroll', handleScroll);
+    let isHandlingScroll = false;
 
     function handleIntersection(entries) {
         entries.forEach((entry) => {
             const { isIntersecting, target, boundingClientRect: { bottom, height } } = entry;
             if (isIntersecting) {
                 watching.add(target);
+                if (watching.size > 0 && !isHandlingScroll) {
+                    document.addEventListener('scroll', handleScroll);
+                    isHandlingScroll = true;
+                }
                 const zoom = getZoom(bottom, height);
                 setImageZoom(target, zoom);
             } else {
                 watching.delete(target);
+                if (watching.size === 0 && isHandlingScroll) {
+                    document.removeEventListener('scroll', handleScroll);
+                    isHandlingScroll = false;
+                }
                 setImageZoom(target, bottom < 0 ? MIN_ZOOM : MAX_ZOOM);
             }
         });

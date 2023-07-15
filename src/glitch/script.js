@@ -1,6 +1,6 @@
 export function useGlitch() {
     const letters = document.querySelectorAll('[data-animation="glitch"]');
-    const observer = new IntersectionObserver(handleIntersection, { threshold: 1 });
+    const observer = new IntersectionObserver(handleIntersection, { threshold: 1, rootMargin: '-30% 0%' });
     const DELAY = 150;
     const ITERATIONS = 6;
 
