@@ -43,8 +43,10 @@ body {
         --color: var(--red);
         --color20: var(--red20);
     }
+}
 
-    *:not(.abouttagred) {
+.content {
+    * {
         transition: color var(--transition-time), border-color var(--transition-time);
         color: var(--color) !important;
         border-color: var(--color) !important;
@@ -53,8 +55,9 @@ body {
         transition: fill var(--transition-time);
         fill: var(--color);
     }
-    .keyboardletter {
-        border-color: var(--color20);
+    .abouttagred {
+        color: var(--red) !important;
+        border-color: var(--red) !important;
     }
 }
 
