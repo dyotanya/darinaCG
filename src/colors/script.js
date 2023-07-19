@@ -1,6 +1,15 @@
 import './style.scss';
 
-export function useScrollColors() {
+/*
+    Categories:
+    ai
+    3d
+    about
+    products*
+    contacts
+*/
+
+export function useScrollColors(glitchSection) {
     const linksElement = document.querySelector('.menulinks');
     const links = linksElement.querySelectorAll('a');
     const sectionBreaks = document.querySelectorAll('[data-animation="sections"]');
@@ -63,14 +72,18 @@ export function useScrollColors() {
     }
 
     function setSection(index) {
+        const section = sections[index];
+        if (section === currentSection) {
+            return;
+        }
         if (currentSection) {
             document.body.classList.remove(`${SECTION_PREFIX}${currentSection}`);
         }
         if (index > -1) {
-            const section = sections[index];
             document.body.classList.add(`${SECTION_PREFIX}${section}`);
             currentSection = section;
             setMenuLinksPosition(index);
+            glitchSection?.(section);
         } else {
             setMenuLinksPosition(0);
         }

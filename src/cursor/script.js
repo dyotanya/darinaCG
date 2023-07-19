@@ -29,8 +29,6 @@ export function useCursor() {
     const dots = [];
     let prevTime;
 
-    document.addEventListener('click', () => console.log(dots));
-
     // setInterval(() => {
     //     if (dots.length >= 25) {
     //         dots.shift();

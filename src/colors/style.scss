@@ -59,6 +59,13 @@ body {
         color: var(--red) !important;
         border-color: var(--red) !important;
     }
+    .keyboardletter {
+        border-color: var(--color20) !important;
+
+        &.glitch {
+            background-color: var(--color20) !important;
+        }
+    }
 }
 
 .fixedmenu {

@@ -1,44 +1,48 @@
 export function useGlitch() {
-    const letters = document.querySelectorAll('[data-animation="glitch"]');
-    const observer = new IntersectionObserver(handleIntersection, { threshold: 1, rootMargin: '-30% 0%' });
     const DELAY = 150;
     const ITERATIONS = 6;
 
-    letters.forEach((letter) => observer.observe(letter));
+    const letters = [...document.querySelectorAll('[data-animation="glitch"]')].reduce((acc, letter) => {
+        const { section } = letter.dataset;
+        if (!acc[section]) {
+            acc[section] = [];
+        }
+        acc[section].push(letter);
+        return acc;
+    }, {});
 
-    function handleIntersection(entries) {
-        let delay = 0;
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                doGlitch(entry.target, delay++);
-                observer.unobserve(entry.target);
-            }
-        });
+    function glitchSection(section) {
+        if (letters[section]) {
+            letters[section].forEach(async (letter, index) => doGlitch(letter, DELAY * index));
+            letters[section] = null;
+        }
     }
 
-    function doGlitch(target, delay) {
-        const value = target.textContent;
+    async function doGlitch(target, delay) {
+        const value = target.firstElementChild.textContent;
         const length = value.length;
 
         const callStack = [];
         for (let i = 0; i < ITERATIONS; i++) {
-            callStack.push(() => iterate(target, length), wait);
+            callStack.push((el) => iterate(el, length), wait);
         }
 
-        const call = callStack.reduce((acc, fn) => {
-            return acc.then(fn);
-        }, new Promise((res) => setTimeout(res, delay * DELAY)));
-
-        call.then(() => target.textContent = value);
+        callStack
+            .reduce((acc, fn) => {
+                return acc.then(fn);
+            }, new Promise((res) => setTimeout(() => res(target), delay)))
+            .then((el) => el.textContent = value);
     }
 
     function iterate(target, length) {
-        target.textContent = generateRandomString(length);
-        return Promise.resolve();
+        target.firstElementChild.textContent = generateRandomString(length);
+        return Promise.resolve(target);
     }
 
-    function wait() {
-        return new Promise((res) => setTimeout(res, DELAY));
+    function wait(target) {
+        return new Promise((res) => setTimeout(() => {
+            res(target);
+        }, DELAY));
     }
 
     function generateRandomString(length) {
@@ -52,4 +56,6 @@ export function useGlitch() {
 
         return arr.join('');
     }
+
+    return glitchSection;
 };

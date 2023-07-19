@@ -7,8 +7,8 @@ import './src/common.css';
 
 if (!window.isCustomCodeInitialized) {
     useZomingPhotos();
-    useScrollColors();
-    useGlitch();
+    const glitchSection = useGlitch();
+    useScrollColors(glitchSection);
     useCursor();
     SmoothScroll({
         // Scrolling Core
