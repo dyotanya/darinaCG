@@ -19,7 +19,7 @@ export function useScrollColors(glitchSection) {
     const sections = [...sectionBreaks].map((sectionBreak) => sectionBreak.dataset.section);
     
     const watching = new Set([]);
-    let currentSection;
+    let currentSectionIndex = -1;
     let isHandlingScroll = false;
     
     const observer = new IntersectionObserver(handleIntersection, { rootMargin: '-40% 0%' });
@@ -72,21 +72,22 @@ export function useScrollColors(glitchSection) {
     }
 
     function setSection(index) {
-        const section = sections[index];
-        if (section === currentSection) {
+        if (index === currentSectionIndex) {
             return;
         }
+        const section = sections[index];
+        const currentSection = sections[currentSectionIndex];
         if (currentSection) {
             document.body.classList.remove(`${SECTION_PREFIX}${currentSection}`);
         }
         if (index > -1) {
             document.body.classList.add(`${SECTION_PREFIX}${section}`);
-            currentSection = section;
             setMenuLinksPosition(index);
             glitchSection?.(section);
         } else {
             setMenuLinksPosition(0);
         }
+        currentSectionIndex = index;
     }
 
     function setMenuLinksPosition(index) {
