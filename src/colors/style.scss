@@ -3,11 +3,13 @@
     --red: #B64B37;
     --gray: #353636;
     --green: #135B41;
+    --blue: #1B4C95;
     --black: #424646;
     --yellow20: #FBF5E736;
     --red20: #B64B3736;
     --gray20: #35363636;
     --green20: #135B4136;
+    --blue20: #1B4C9536;
     --black20: #42464636;
 }
 
@@ -36,6 +38,14 @@ body {
         --color20: var(--green20);
     }
     &.section-about {
+        --color: var(--black);
+        --color20: var(--black20);
+    }
+    &.section-educational {
+        --color: var(--blue);
+        --color20: var(--blue20);
+    }
+    &.section-show {
         --color: var(--black);
         --color20: var(--black20);
     }
