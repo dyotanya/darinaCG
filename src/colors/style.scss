@@ -21,7 +21,7 @@ body {
     --menu-color: var(--yellow);
     --menu-border-color: var(--red);
 
-    &[class^="section-"] {
+    &[class*="section-"] {
         --bg: var(--yellow);
         --menu-border-color: var(--color);
         --menu-color: var(--color);
