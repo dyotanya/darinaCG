@@ -22,7 +22,7 @@ export function useScrollColors(glitchSection) {
     let currentSectionIndex = -1;
     let isHandlingScroll = false;
     
-    const observer = new IntersectionObserver(handleIntersection, { rootMargin: '-40% 0%' });
+    const observer = new IntersectionObserver(handleIntersection, { rootMargin: '-48% 0%' });
     sectionBreaks.forEach((sectionBreak) => observer.observe(sectionBreak));
     
     linksElement.style.setProperty('--num-steps', links.length);
@@ -47,18 +47,19 @@ export function useScrollColors(glitchSection) {
             const { isIntersecting, target } = entry;
             if (isIntersecting) {
                 watching.add(target);
-                if (watching.size > 0 && !isHandlingScroll) {
-                    document.addEventListener('scroll', handleScroll);
-                    isHandlingScroll = true;
-                }
             } else {
                 watching.delete(target);
-                if (watching.size === 0 && isHandlingScroll) {
-                    document.removeEventListener('scroll', handleScroll);
-                    isHandlingScroll = false;
-                }
             }
         });
+
+        if (watching.size > 0 && !isHandlingScroll) {
+            document.addEventListener('scroll', handleScroll);
+            isHandlingScroll = true;
+        }
+        if (watching.size === 0 && isHandlingScroll) {
+            document.removeEventListener('scroll', handleScroll);
+            isHandlingScroll = false;
+        }
     }
 
     function getSectionIndex(section) {
