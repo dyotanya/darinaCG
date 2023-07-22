@@ -24,6 +24,8 @@ export function useScrollColors(glitchSection) {
     
     const observer = new IntersectionObserver(handleIntersection, { rootMargin: '-40% 0%' });
     sectionBreaks.forEach((sectionBreak) => observer.observe(sectionBreak));
+    
+    linksElement.style.setProperty('--num-steps', links.length);
 
     setInitialState();
 

@@ -106,8 +106,9 @@ body {
 
     .menulinks {
         --step: 0;
+        --num-steps: 6;
         transition: transform var(--transition-time) ease-in-out;
-        transform: translateY(calc(-20% * var(--step)));
+        transform: translateY(calc(-1 * var(--num-steps) * var(--step)));
 
         .textlink {
             transition: opacity var(--transition-time);
