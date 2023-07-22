@@ -21,14 +21,12 @@ body {
     --menu-color: var(--yellow);
     --menu-border-color: var(--red);
 
-    &.section-ai,
-    &.section-3d,
-    &.section-about,
-    &.section-contacts {
+    &[class^="section-"] {
         --bg: var(--yellow);
         --menu-border-color: var(--color);
         --menu-color: var(--color);
     }
+
     &.section-ai {
         --color: var(--red);
         --color20: var(--red20);
@@ -45,11 +43,11 @@ body {
         --color: var(--blue);
         --color20: var(--blue20);
     }
-    &.section-show {
+    &.section-shop {
         --color: var(--black);
         --color20: var(--black20);
     }
-    &.section-contacts {
+    &.section-contact {
         --color: var(--red);
         --color20: var(--red20);
     }
