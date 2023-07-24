@@ -54,7 +54,7 @@ body {
 }
 
 .content {
-    * {
+    *:not(.abouttag) {
         transition: color var(--transition-time), border-color var(--transition-time);
         color: var(--color) !important;
         border-color: var(--color) !important;
@@ -62,10 +62,6 @@ body {
     path {
         transition: fill var(--transition-time);
         fill: var(--color);
-    }
-    .abouttagred {
-        color: var(--red) !important;
-        border-color: var(--red) !important;
     }
     .keyboardletter {
         border-color: var(--color20) !important;

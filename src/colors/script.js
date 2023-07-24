@@ -2,11 +2,7 @@ import './style.scss';
 
 /*
     Categories:
-    ai
-    3d
-    about
-    products*
-    contacts
+    'ai', '3d', 'about', 'educational', 'shop', 'contact'
 */
 
 export function useScrollColors(glitchSection) {
@@ -18,12 +14,18 @@ export function useScrollColors(glitchSection) {
 
     const sections = [...sectionBreaks].map((sectionBreak) => sectionBreak.dataset.section);
     
-    const watching = new Set([]);
     let currentSectionIndex = -1;
-    let isHandlingScroll = false;
     
-    const observer = new IntersectionObserver(handleIntersection, { rootMargin: '-48% 0%' });
-    sectionBreaks.forEach((sectionBreak) => observer.observe(sectionBreak));
+    const topObserver = new IntersectionObserver(handleTopIntersection, { rootMargin: '0% 0% -50% 0%', threshold: 1 });
+    const bottomObserver = new IntersectionObserver(handleBottomIntersection, { rootMargin: '-50% 0% 0% 0%', threshold: 1 });
+    sectionBreaks.forEach((sectionBreak) => {
+        const { top } = sectionBreak.getBoundingClientRect();
+        if (top > document.documentElement.clientHeight / 2 - INITIAL_CHECK_MARGIN) {
+            topObserver.observe(sectionBreak);
+        } else {
+            bottomObserver.observe(sectionBreak);
+        }
+    });
     
     linksElement.style.setProperty('--num-steps', links.length);
 
@@ -42,36 +44,32 @@ export function useScrollColors(glitchSection) {
         }
     }
 
-    function handleIntersection(entries) {
+    function handleTopIntersection(entries) {
         entries.forEach((entry) => {
             const { isIntersecting, target } = entry;
             if (isIntersecting) {
-                watching.add(target);
-            } else {
-                watching.delete(target);
+                const sectionIndex = getSectionIndex(target.dataset.section);
+                setSection(sectionIndex);
+                topObserver.unobserve(target);
+                bottomObserver.observe(target);
             }
         });
+    }
 
-        if (watching.size > 0 && !isHandlingScroll) {
-            document.addEventListener('scroll', handleScroll);
-            isHandlingScroll = true;
-        }
-        if (watching.size === 0 && isHandlingScroll) {
-            document.removeEventListener('scroll', handleScroll);
-            isHandlingScroll = false;
-        }
+    function handleBottomIntersection(entries) {
+        entries.forEach((entry) => {
+            const { isIntersecting, target } = entry;
+            if (isIntersecting) {
+                const sectionIndex = getSectionIndex(target.dataset.section);
+                setSection(sectionIndex - 1);
+                bottomObserver.unobserve(target);
+                topObserver.observe(target);
+            }
+        });
     }
 
     function getSectionIndex(section) {
         return sections.indexOf(section);
-    }
-
-    function handleScroll() {
-        watching.forEach((entry) => {
-            const { top } = entry.getBoundingClientRect();
-            const sectionIndex = getSectionIndex(entry.dataset.section);
-            setSection(top < document.documentElement.clientHeight / 2 ? sectionIndex : sectionIndex - 1);
-        });
     }
 
     function setSection(index) {
