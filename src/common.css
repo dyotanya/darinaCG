@@ -3,3 +3,7 @@
     --red: #B64B37;
     --black: #353636;
 }
+
+* {
+    font-variant-numeric: lining-nums tabular-nums;
+}
