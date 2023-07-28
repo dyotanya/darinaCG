@@ -1,8 +1,12 @@
 import { gsap } from "gsap";
+import { getIsTouch } from "../common";
 
 import './style.scss';
 
 export function useCursor() {
+    if (getIsTouch()) {
+        return;
+    }
     const speedCoeff = 0.01;
     const radius = 6;
     const canvas = document.createElement('canvas');

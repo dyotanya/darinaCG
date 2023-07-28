@@ -1,0 +1,78 @@
+.fixedmenu {
+    .menulinks {
+        --step: 0;
+        --num-steps: 6;
+        transition: transform var(--transition-time) ease-in-out;
+        transform: translateY(calc(-100% * var(--step) / var(--num-steps)));
+
+        .textlink {
+            transition: opacity var(--transition-time);
+        }
+    }
+}
+
+.mobilemenu {
+    transition: height 1s cubic-bezier(.7,0,.45,1);
+
+    .mobilemenutitle {
+        transition: color var(--transition-time), transform 1s cubic-bezier(.7,0,.45,1);
+
+        img {
+            transform-origin: center bottom;
+            transition: transform 1s cubic-bezier(.7,0,.45,1);
+        }
+    }
+
+    &.shrink {
+        height: 20vh;
+
+        .mobilemenutitle {
+            transform: translateY(-15%);
+        }
+
+        img {
+            transform: translate(-50%) scale(0.7);
+        }
+    }
+
+    .mobilemenulinks {
+        .textlink {
+            position: relative;
+    
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 50%;
+                right: 0;
+                transform: translate(250%, -50%);
+                height: 0.6em;
+                aspect-ratio: 1;
+                background-color: currentColor;
+                transition: opacity var(--transition-time);
+            }
+    
+            &.inactive::after {
+                opacity: 0;
+            }
+        }
+
+        li:last-child {
+            .textlink::after {
+                left: 0;
+                transform: translate(-250%, -50%);
+            }
+        }
+    }
+}
+
+.fixedmenucontent::after {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 1px;
+    background: repeating-linear-gradient(to bottom, var(--menu-border-color), var(--menu-border-color) 1px, transparent 1px, transparent 6px);
+}

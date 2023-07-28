@@ -1,3 +1,5 @@
+import { getIsDesktop } from '../common';
+
 import './style.scss';
 
 /*
@@ -5,9 +7,7 @@ import './style.scss';
     'ai', '3d', 'about', 'educational', 'shop', 'contact'
 */
 
-export function useScrollColors(glitchSection) {
-    const linksElement = document.querySelector('.menulinks');
-    const links = linksElement.querySelectorAll('a');
+export function useScrollColors(glitchSection, setMenuSection) {
     const sectionBreaks = document.querySelectorAll('[data-animation="sections"]');
     const INITIAL_CHECK_MARGIN = 25;
     const SECTION_PREFIX = 'section-';
@@ -15,9 +15,24 @@ export function useScrollColors(glitchSection) {
     const sections = [...sectionBreaks].map((sectionBreak) => sectionBreak.dataset.section);
     
     let currentSectionIndex = -1;
+
+    const getObservers = () => {
+        let topMargin = '0% 0% -50% 0%';
+        let bottomMargin = '-50% 0% 0% 0%';
+
+        if (!getIsDesktop()) {
+            topMargin = '0% 0% -80% 0%';
+            bottomMargin = '-20% 0% 0% 0%';
+        }
+
+        const topObserver = new IntersectionObserver(handleTopIntersection, { rootMargin: topMargin, threshold: 1 });
+        const bottomObserver = new IntersectionObserver(handleBottomIntersection, { rootMargin: bottomMargin, threshold: 1 });
+
+        return { topObserver, bottomObserver };
+    }
     
-    const topObserver = new IntersectionObserver(handleTopIntersection, { rootMargin: '0% 0% -50% 0%', threshold: 1 });
-    const bottomObserver = new IntersectionObserver(handleBottomIntersection, { rootMargin: '-50% 0% 0% 0%', threshold: 1 });
+    const { topObserver, bottomObserver } = getObservers();
+    
     sectionBreaks.forEach((sectionBreak) => {
         const { top } = sectionBreak.getBoundingClientRect();
         if (top > document.documentElement.clientHeight / 2 - INITIAL_CHECK_MARGIN) {
@@ -26,8 +41,6 @@ export function useScrollColors(glitchSection) {
             bottomObserver.observe(sectionBreak);
         }
     });
-    
-    linksElement.style.setProperty('--num-steps', links.length);
 
     setInitialState();
 
@@ -83,22 +96,11 @@ export function useScrollColors(glitchSection) {
         }
         if (index > -1) {
             document.body.classList.add(`${SECTION_PREFIX}${section}`);
-            setMenuLinksPosition(index);
+            setMenuSection(index);
             glitchSection?.(section);
         } else {
-            setMenuLinksPosition(0);
+            setMenuSection(0);
         }
         currentSectionIndex = index;
-    }
-
-    function setMenuLinksPosition(index) {
-        linksElement.style.setProperty('--step', index);
-        links.forEach((link, i) => {
-            if (index === i) {
-                link.classList.remove('inactive');
-            } else {
-                link.classList.add('inactive');
-            }
-        });
     }
 };

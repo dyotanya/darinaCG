@@ -18,8 +18,11 @@ body {
     --bg: var(--red);
     --color: var(--red);
     --color20: var(--red20);
-    --menu-color: var(--yellow);
     --menu-border-color: var(--red);
+
+    @media screen and (min-width: 992px) {
+        --menu-color: var(--yellow);
+    }
 
     &[class*="section-"] {
         --bg: var(--yellow);
@@ -72,7 +75,8 @@ body {
     }
 }
 
-.fixedmenu {
+.fixedmenu,
+.mobilemenu {
     .fixedmenucontent {
         transition: background-color var(--transition-time);
         background-color: var(--bg);
@@ -99,26 +103,4 @@ body {
         transition: fill var(--transition-time);
         fill: var(--menu-color);
     }
-
-    .menulinks {
-        --step: 0;
-        --num-steps: 6;
-        transition: transform var(--transition-time) ease-in-out;
-        transform: translateY(calc(-100% * var(--step) / var(--num-steps)));
-
-        .textlink {
-            transition: opacity var(--transition-time);
-        }
-    }
-}
-
-.fixedmenucontent::after {
-    display: block;
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: 1px;
-    background: repeating-linear-gradient(to bottom, var(--menu-border-color), var(--menu-border-color) 1px, transparent 1px, transparent 6px);
 }

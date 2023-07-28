@@ -1,3 +1,4 @@
+import { useMenu } from "./src/menu/script";
 import { useZomingPhotos } from "./src/zoomingPhotos/script";
 import { useGlitch } from "./src/glitch/script";
 import { useScrollColors } from "./src/colors/script";
@@ -6,9 +7,10 @@ import { useCursor } from "./src/cursor/script";
 import './src/common.css';
 
 if (!window.isCustomCodeInitialized) {
-    useZomingPhotos();
+    const setMenuSection = useMenu();
     const glitchSection = useGlitch();
-    useScrollColors(glitchSection);
+    useScrollColors(glitchSection, setMenuSection);
+    useZomingPhotos();
     useCursor();
     SmoothScroll({
         // Scrolling Core
