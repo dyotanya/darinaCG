@@ -1,19 +1,33 @@
-import { getIsDesktop } from '../common';
+import { getIsDesktop, useOnResize } from '../common';
 
 import './style.scss';
 
 export function useMenu() {
-    const isDesktop = getIsDesktop();
     const mobileMenu = document.querySelector('.mobilemenu');
+    const linksElements = {
+        desktop: document.querySelector('.menulinks'),
+        mobile: document.querySelector('.mobilemenulinks'),
+    }
 
-    const linksElement = document.querySelector(isDesktop ? '.menulinks' : '.mobilemenulinks');
-    const links = linksElement.querySelectorAll('a');
-    
-    linksElement.style.setProperty('--num-steps', links.length);
+    let linksElement;
+    let links;
 
-    if (!isDesktop) {
-        document.addEventListener('scroll', shrinkMenu);
-        shrinkMenu();
+    useOnResize(init, getIsDesktop, 250);
+
+    init(getIsDesktop());
+
+    function init(isDesktop) {
+        if (isDesktop) {
+            linksElement = linksElements.desktop;
+            document.removeEventListener('scroll', shrinkMenu);
+        } else {
+            linksElement = linksElements.mobile;
+            document.addEventListener('scroll', shrinkMenu);
+            shrinkMenu();
+        }
+
+        links = linksElement.querySelectorAll('a');
+        linksElement.style.setProperty('--num-steps', links.length);
     }
 
     function setMenuSection(index) {

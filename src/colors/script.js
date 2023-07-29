@@ -1,4 +1,4 @@
-import { getIsDesktop } from '../common';
+import { getIsDesktop, useOnResize } from '../common';
 
 import './style.scss';
 
@@ -15,12 +15,39 @@ export function useScrollColors(glitchSection, setMenuSection) {
     const sections = [...sectionBreaks].map((sectionBreak) => sectionBreak.dataset.section);
     
     let currentSectionIndex = -1;
+    let topObserver;
+    let bottomObserver;
 
-    const getObservers = () => {
+    useOnResize(init, getIsDesktop);
+
+    init(getIsDesktop());
+    setInitialState();
+
+    function init(isDesktop) {
+        topObserver && topObserver.disconnect();
+        bottomObserver && bottomObserver.disconnect();
+
+        const observers = getObservers(isDesktop);
+        topObserver = observers.topObserver;
+        bottomObserver = observers.bottomObserver;
+    
+        sectionBreaks.forEach((sectionBreak) => {
+            const { top } = sectionBreak.getBoundingClientRect();
+            if (top > document.documentElement.clientHeight / 2 - INITIAL_CHECK_MARGIN) {
+                topObserver.observe(sectionBreak);
+            } else {
+                bottomObserver.observe(sectionBreak);
+            }
+        });
+
+        setInitialState();
+    }
+
+    function getObservers(isDesktop) {
         let topMargin = '0% 0% -50% 0%';
         let bottomMargin = '-50% 0% 0% 0%';
 
-        if (!getIsDesktop()) {
+        if (!isDesktop) {
             topMargin = '0% 0% -80% 0%';
             bottomMargin = '-20% 0% 0% 0%';
         }
@@ -30,19 +57,6 @@ export function useScrollColors(glitchSection, setMenuSection) {
 
         return { topObserver, bottomObserver };
     }
-    
-    const { topObserver, bottomObserver } = getObservers();
-    
-    sectionBreaks.forEach((sectionBreak) => {
-        const { top } = sectionBreak.getBoundingClientRect();
-        if (top > document.documentElement.clientHeight / 2 - INITIAL_CHECK_MARGIN) {
-            topObserver.observe(sectionBreak);
-        } else {
-            bottomObserver.observe(sectionBreak);
-        }
-    });
-
-    setInitialState();
 
     function setInitialState() {
         const nextSectionBreak = [...sectionBreaks].find((sectionBreak) => {
