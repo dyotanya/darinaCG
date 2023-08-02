@@ -23,6 +23,11 @@
         }
     }
 
+    .mobilemenulanguages {
+        opacity: 1;
+        transition: opacity var(--transition-time);
+    }
+
     &.shrink {
         height: 20vh;
 
@@ -32,6 +37,11 @@
 
         img {
             transform: translate(-50%) scale(0.7);
+        }
+
+        .mobilemenulanguages {
+            opacity: 0;
+            pointer-events: none;
         }
     }
 
