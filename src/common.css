@@ -1,7 +1,16 @@
 :root {
     --yellow: #FBF5E7;
     --red: #B64B37;
-    --black: #353636;
+    --gray: #353636;
+    --green: #135B41;
+    --blue: #1B4C95;
+    --black: #424646;
+    --yellow20: #FBF5E736;
+    --red20: #B64B3736;
+    --gray20: #35363636;
+    --green20: #135B4136;
+    --blue20: #1B4C9536;
+    --black20: #42464636;
 }
 
 * {

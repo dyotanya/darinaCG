@@ -23,6 +23,9 @@ body {
     @media screen and (min-width: 992px) {
         --menu-color: var(--yellow);
     }
+    @media screen and (max-width: 991px) {
+        --menu-color: var(--red);
+    }
 
     &[class*="section-"] {
         --bg: var(--yellow);
@@ -85,6 +88,14 @@ body {
     * {
         transition: color var(--transition-time);
         color: var(--menu-color);
+    }
+    .mobilemenubutton {
+        transition: background-color var(--transition-time);
+        background-color: var(--color);
+
+        p {
+            color: var(--yellow) !important;
+        }
     }
     .borderedtext {
         transition: border-color var(--transition-time);

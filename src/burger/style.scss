@@ -1,0 +1,30 @@
+html {
+    overflow: auto;
+}
+.scroll-blocked {
+    overflow: hidden;
+    padding-right: var(--scroll-bar-width, 0);
+}
+
+.burgermenu {
+    background-color: var(--bg);
+
+    &.opened {
+        display: flex;
+    }
+
+    .burgermenulinks {
+        position: relative;
+
+        &::after {
+            display: block;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: repeating-linear-gradient(to bottom, var(--yellow), var(--yellow) 1px, transparent 1px, transparent 6px);
+        }
+    }
+}

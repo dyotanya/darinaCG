@@ -6,7 +6,7 @@ export function useMenu() {
     const mobileMenu = document.querySelector('.mobilemenu');
     const linksElements = {
         desktop: document.querySelector('.menulinks'),
-        mobile: document.querySelector('.mobilemenulinks'),
+        mobile: document.querySelector('.mobilemenulinks') || document.querySelector('.menulinks'),
     }
 
     let linksElement;

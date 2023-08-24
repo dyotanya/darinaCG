@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <link rel="stylesheet" href="./instant.css">
+    <div class="preloader">
+        <div class="preloader__container">
+            <div class="preloader__dots"></div>
+            <div class="preloader__text">
+                Hello, I'm Darina.<br>
+                I create 3D images and AI concepts<br>
+                for scenography, architectural<br>
+                design and products. //
+            </div>
+            <div class="preloader__indicator">0%</div>
+        </div>
+    </div>
+    <script src="./instant.bundle.js"></script>
+
+    <script>
+        setTimeout(() => setPreloader(5), 250);
+
+        setTimeout(() => setPreloader(25), 1000);
+
+        setTimeout(() => setPreloader(75), 2000);
+
+        setTimeout(() => setPreloader(100), 3000);
+    </script>
+</body>
+</html>

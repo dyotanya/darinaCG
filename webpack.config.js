@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = (env) => ({
   entry: {
     index: './index.js',
-    // instant: './instant.js',
+    instant: './instant.js',
   },
   mode: env.mode || 'development',
   watch: env.watch || false,

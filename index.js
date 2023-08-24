@@ -5,12 +5,14 @@ import { useScrollColors } from "./src/colors/script";
 import SmoothScroll from "smoothscroll-for-websites";
 import { useCursor } from "./src/cursor/script";
 import { useWorkedWith } from "./src/workedWith/script";
+import { useBurgerMenu } from "./src/burger/script";
 
 import './src/common.css';
 
 const setMenuSection = useMenu();
 const glitchSection = useGlitch();
 useScrollColors(glitchSection, setMenuSection);
+useBurgerMenu();
 useZomingPhotos();
 useCursor();
 useWorkedWith();

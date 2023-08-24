@@ -26,17 +26,33 @@
     .mobilemenulanguages {
         opacity: 1;
         transition: opacity var(--transition-time);
+
+        @media screen and (max-width: 767px) {
+            visibility: hidden;
+        }
     }
 
     &.shrink {
-        height: 20vh;
+        height: 25vw;
+
+        @media screen and (max-width: 767px) {
+            height: 20vw;
+        }
 
         .mobilemenutitle {
             transform: translateY(-15%);
+
+            @media screen and (max-width: 767px) {
+                transform: translateY(-75%);
+            }
         }
 
         img {
             transform: translate(-50%) scale(0.7);
+
+            @media screen and (max-width: 767px) {
+                transform: translate(-50%) scale(0);
+            }
         }
 
         .mobilemenulanguages {
