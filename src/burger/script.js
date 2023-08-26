@@ -2,7 +2,7 @@ import './style.scss';
 
 export function useBurgerMenu() {
     const burger = document.querySelector('.burgermenu');
-    const openBtn = document.querySelector('.mobilemenubutton');
+    const openBtn = document.querySelector('[data-trigger="burger"]');
     const closeBtn = document.querySelector('.burgermenubutton');
 
     const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
