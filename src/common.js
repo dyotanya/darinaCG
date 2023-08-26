@@ -21,3 +21,24 @@ export const useOnResize = (handler, getCondition, delay = 200) => {
         }, delay);
     });
 };
+
+(() => {
+    const moveAccordeon = () => {
+        const products = document.querySelectorAll('.js-store-product');
+
+        if (!products.length) {
+            return;
+        }
+
+        products.forEach((product) => {
+            const info = product.querySelector('.t-store__prod-popup__info');
+            const accordeon = product.querySelector('.js-store-tabs');
+
+            if (info && accordeon) {
+                info.append(accordeon);
+            }
+        });
+    };
+
+    moveAccordeon();
+})();

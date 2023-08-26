@@ -1,0 +1,23 @@
+.pagecontent {
+    * {
+        color: var(--page-color);
+        border-color: var(--page-color);
+    }
+
+    .footerlink {
+        color: var(--yellow);
+    }
+
+    .navbackunderline {
+        background-color: var(--page-color);
+    }
+
+    $pages: ai-concepts, dar-studio-render, about, educational, shop, contact;
+    @each $page in $pages {
+        [active-link="#{$page}"] {
+            [data-link="#{$page}"] {
+                opacity: 1;
+            }
+        }
+    }
+}

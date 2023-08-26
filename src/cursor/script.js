@@ -1,4 +1,4 @@
-import { gsap } from "gsap";
+// import { gsap } from "gsap";
 import { getIsTouch } from "../common";
 
 import './style.scss';
@@ -83,17 +83,17 @@ export function useCursor() {
 
         window.addEventListener("resize", onResize, false);
 
-        const tween = gsap.to(circle, {
-            radius: circle.radius * 3,
-            ease: 'power1.easeInOur',
-            paused: true,
-            duration: 0.25,
-        });
+        // const tween = gsap.to(circle, {
+        //     radius: circle.radius * 3,
+        //     ease: 'power1.easeInOur',
+        //     paused: true,
+        //     duration: 0.25,
+        // });
 
-        elems.forEach((el) => {
-            el.addEventListener("mouseenter", () => tween.play(), false);
-            el.addEventListener("mouseleave", () => tween.reverse(), false);
-        });
+        // elems.forEach((el) => {
+        //     el.addEventListener("mouseenter", () => tween.play(), false);
+        //     el.addEventListener("mouseleave", () => tween.reverse(), false);
+        // });
     }
 
     function lerp(a, b, n) {

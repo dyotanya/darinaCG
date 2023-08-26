@@ -1,0 +1,29 @@
+<style>
+    .js-store-tabs {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+</style>
+
+<script>
+    (() => {
+        const moveAccordeon = () => {
+            const products = document.querySelectorAll('.js-store-product');
+
+            if (!products.length) {
+                return;
+            }
+
+            products.forEach((product) => {
+                const info = product.querySelector('.t-store__prod-popup__info');
+                const accordeon = product.querySelector('.js-store-tabs');
+
+                if (info && accordeon) {
+                    info.append(accordeon);
+                }
+            });
+        };
+
+        window.addEventListener('load', moveAccordeon);
+    })();
+</script>

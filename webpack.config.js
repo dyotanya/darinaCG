@@ -5,6 +5,7 @@ module.exports = (env) => ({
   entry: {
     index: './index.js',
     instant: './instant.js',
+    page: './page.js',
   },
   mode: env.mode || 'development',
   watch: env.watch || false,
