@@ -8,9 +8,16 @@
         color: var(--yellow);
     }
 
-    .navbackunderline,
-    .burgermenu,
-    .menubutton {
+    .navbackunderline {
         background-color: var(--page-color);
     }
+
+    .menubutton {
+        background-color: var(--page-color);
+        color: var(--yellow);
+    }
+}
+
+.burgermenu {
+    background-color: var(--page-color);
 }
