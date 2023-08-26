@@ -6,7 +6,8 @@ import { useCursor } from "./src/cursor/script";
 import { useWorkedWith } from "./src/workedWith/script";
 import { useBurgerMenu } from "./src/burger/script";
 
-import './src/common.css';
+import './src/styles/common.scss';
+import './src/styles/home.scss';
 
 const setMenuSection = useMenu();
 const glitchSection = useGlitch();

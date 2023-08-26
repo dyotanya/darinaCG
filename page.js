@@ -1,6 +1,8 @@
 import { useCursor } from "./src/cursor/script";
+import { useBurgerMenu } from "./src/burger/script";
 
-import './src/common.css';
-import './src/pageLinkAndColor/style.scss';
+import './src/styles/common.scss';
+import './src/styles/page.scss';
 
+useBurgerMenu();
 useCursor();

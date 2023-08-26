@@ -1,0 +1,15 @@
+.pagecontent {
+    * {
+        color: var(--page-color);
+        border-color: var(--page-color);
+    }
+
+    .footerlink {
+        color: var(--yellow);
+    }
+
+    .navbackunderline,
+    .burgermenu {
+        background-color: var(--page-color);
+    }
+}

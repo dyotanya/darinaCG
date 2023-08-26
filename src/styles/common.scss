@@ -17,7 +17,20 @@
     font-variant-numeric: lining-nums tabular-nums;
 }
 
-.productslist::after,
-.productslist::before {
-    display: none !important;
+$pages: home, ai-concepts, dar-studio-render, about, educational, shop, contact;
+
+:root {
+    --active-link-opacity: 1;
+}
+
+.burgermenu {
+    --active-link-opacity: 0.6;
+}
+
+@each $page in $pages {
+    [active-link="#{$page}"] {
+        [data-link="#{$page}"] {
+            opacity: var(--active-link-opacity, 1);
+        }
+    }
 }
