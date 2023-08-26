@@ -1,23 +1,15 @@
-.pagecontent {
-    * {
-        color: var(--page-color);
-        border-color: var(--page-color);
-    }
-
-    .footerlink {
-        color: var(--yellow);
-    }
-
-    .navbackunderline {
-        background-color: var(--page-color);
-    }
-
-    .menubutton {
-        background-color: var(--page-color);
-        color: var(--yellow);
-    }
+* {
+    color: var(--page-color);
+    border-color: var(--page-color);
 }
 
-.burgermenu {
+.footerlink,
+.borderedtextcontent {
+    color: var(--yellow);
+}
+
+.navbackunderline,
+.burgermenu,
+.menubutton {
     background-color: var(--page-color);
 }
