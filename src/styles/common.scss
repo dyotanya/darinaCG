@@ -11,6 +11,7 @@
     --green20: #135B4136;
     --blue20: #1B4C9536;
     --black20: #42464636;
+    --besier-transition: cubic-bezier(.7,0,.45,1);
 }
 
 * {
@@ -31,6 +32,7 @@ $pages: home, ai-concepts, dar-studio-render, about, educational, shop, contact;
     [active-link="#{$page}"] {
         [data-link="#{$page}"] {
             opacity: var(--active-link-opacity, 1);
+            pointer-events: none;
         }
     }
 }

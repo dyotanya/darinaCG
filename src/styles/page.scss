@@ -1,6 +1,6 @@
-* {
+*, a {
     color: var(--page-color);
-    border-color: var(--page-color);
+    border-color: var(--page-color) !important;
 }
 
 .footerlink,
@@ -13,4 +13,15 @@
 .burgermenu,
 .menubutton {
     background-color: var(--page-color);
+}
+
+.pageheading {
+    span {
+        display: inline-block;
+        white-space: break-spaces;
+
+        &::first-letter {
+            font-family: 'Arizonia', serif;
+        }
+    }
 }

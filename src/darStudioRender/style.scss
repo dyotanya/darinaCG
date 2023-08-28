@@ -1,0 +1,11 @@
+.workedwithlogo {
+    transition: opacity 0.5s;
+}
+
+.workedwithitemtitle {
+    &:hover {
+        + .workedwithlogo {
+            opacity: 1;
+        }
+    }
+}
