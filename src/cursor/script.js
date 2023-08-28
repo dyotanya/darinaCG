@@ -7,6 +7,7 @@ export function useCursor() {
     if (getIsTouch()) {
         return;
     }
+    const pixelRatio = window.devicePixelRatio || 1;
     const speedCoeff = 0.01;
     const radius = 6;
     const canvas = document.createElement('canvas');
@@ -41,8 +42,12 @@ export function useCursor() {
     // }, 1);
 
     function onResize() {
-        size.width = canvas.width = window.innerWidth;
-        size.height = canvas.height = window.innerHeight;
+        size.width = canvas.width = window.innerWidth * pixelRatio;
+        size.height = canvas.height = window.innerHeight * pixelRatio;
+
+        if (pixelRatio > 1) {
+            ctx.scale(pixelRatio, pixelRatio);
+        }
     }
 
     function render(timestamp) {

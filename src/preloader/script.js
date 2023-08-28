@@ -20,7 +20,7 @@ export function usePreloader() {
 
     function hidePreloader(isShortcut = false) {
         if (isShortcut) {
-            return preloader.classList.add('shortcut');
+            return preloader.remove();
         }
         preloader.addEventListener('transitionend', (event) => {
             if (event.target !== preloader) {

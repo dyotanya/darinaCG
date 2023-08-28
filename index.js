@@ -3,7 +3,7 @@ import { useZomingPhotos } from "./src/zoomingPhotos/script";
 import { useGlitch } from "./src/glitch/script";
 import { useScrollColors } from "./src/colors/script";
 import { useCursor } from "./src/cursor/script";
-import { useWorkedWith } from "./src/workedWith/script";
+import { useRunningLine } from "./src/runningLine/script";
 import { useBurgerMenu } from "./src/burger/script";
 
 import './src/styles/common.scss';
@@ -15,4 +15,4 @@ useScrollColors(glitchSection, setMenuSection);
 useBurgerMenu();
 useZomingPhotos();
 useCursor();
-useWorkedWith();
+useRunningLine();

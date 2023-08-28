@@ -59,6 +59,7 @@
         font-size: 1em;
         line-height: 1.1em;
         text-indent: 7em;
+        text-transform: uppercase;
 
         transition: opacity var(--transition);
     }
@@ -70,6 +71,8 @@
         position: absolute;
         bottom: 0;
         font-size: 8em;
+        line-height: 1em;
+        font-weight: 500;
 
         left: calc(var(--value) * 1%);
         transform: translateX(calc(var(--value) * -1%));
@@ -98,9 +101,5 @@
         .preloader__indicator {
             opacity: 0;
         }
-    }
-
-    &.shortcut {
-        opacity: 0;
     }
 }

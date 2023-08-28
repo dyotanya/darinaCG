@@ -1,12 +1,14 @@
-.aboutworkedwithcontainer {
-    .aboutworkedwithrow {
+[data-style="runner-container"] {
+    overflow: hidden;
+
+    [data-style="runner-row"] {
         animation-duration: 18s;
         animation-iteration-count: infinite;
         animation-timing-function: linear;
     }
 
     &.animated {
-        .aboutworkedwithrow {
+        [data-style="runner-row"] {
             &:nth-child(1) {
                 animation-name: running-line-1;
             }

@@ -5,8 +5,12 @@
 
 .footerlink,
 .menubutton p,
-.burgersendmessagebtn path {
+.burgersendmessagebtn * {
     color: var(--yellow);
+}
+
+.burgersendmessagebtn {
+    border-color: var(--yellow) !important;
 }
 
 .navbackunderline,

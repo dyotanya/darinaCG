@@ -1,7 +1,7 @@
 import './style.scss';
 
-export function useWorkedWith() {
-    const container = document.querySelector('.aboutworkedwithcontainer');
+export function useRunningLine() {
+    const container = document.querySelector('[data-style="runner-container"]');
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
