@@ -15,6 +15,10 @@
 
     transition: width var(--transition);
 
+    @media (prefers-reduced-motion: reduce) {
+        transition: opacity var(--transition);
+    }
+
     @media screen and (max-width: 991px) {
         transition: height var(--transition);
     }
@@ -95,6 +99,12 @@
         }
         @media screen and (max-width: 478px) {
             height: 95vw;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            width: 100vw;
+            height: 100vh;
+            opacity: 0;
         }
 
         .preloader__text,

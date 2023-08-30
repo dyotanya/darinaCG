@@ -21,3 +21,6 @@ export const useOnResize = (handler, getCondition, delay = 200) => {
         }, delay);
     });
 };
+
+export const prefersReducedMotion =
+    window.matchMedia(`(prefers-reduced-motion: reduce)`) === true || window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;

@@ -1,4 +1,3 @@
-// import { gsap } from "gsap";
 import { getIsTouch } from "../common";
 
 import './style.scss';
@@ -7,9 +6,10 @@ export function useCursor() {
     if (getIsTouch()) {
         return;
     }
+    const SPEED_COEFF = 0.01;
+    const RADIUS = 6;
+    const HOVER_RADIUS = 14;
     const pixelRatio = window.devicePixelRatio || 1;
-    const speedCoeff = 0.01;
-    const radius = 6;
     const canvas = document.createElement('canvas');
     canvas.classList.add('cursor-canvas');
     const ctx = canvas.getContext("2d");
@@ -27,7 +27,8 @@ export function useCursor() {
         y: size.height / 2,
     }
     const circle = {
-        radius: radius,
+        radius: RADIUS,
+        targetRadius: RADIUS,
         lastX: mouse.x,
         lastY: mouse.y,
     };
@@ -54,9 +55,11 @@ export function useCursor() {
         if (!prevTime) {
             prevTime = timestamp;
         }
-        const timeDiff = (timestamp - prevTime) * speedCoeff;
+        const timeDiff = (timestamp - prevTime) * SPEED_COEFF;
         circle.lastX = lerp(circle.lastX, mouse.x, timeDiff);
         circle.lastY = lerp(circle.lastY, mouse.y, timeDiff);
+
+        resizeCircle(timeDiff);
 
         ctx.fillStyle = "white";
         
@@ -88,17 +91,25 @@ export function useCursor() {
 
         window.addEventListener("resize", onResize, false);
 
-        // const tween = gsap.to(circle, {
-        //     radius: circle.radius * 3,
-        //     ease: 'power1.easeInOur',
-        //     paused: true,
-        //     duration: 0.25,
-        // });
+        elems.forEach((el) => {
+            el.addEventListener("mouseenter", () => console.log('enter') || (circle.targetRadius = HOVER_RADIUS), false);
+            el.addEventListener("mouseleave", () => circle.targetRadius = RADIUS, false);
+        });
+    }
 
-        // elems.forEach((el) => {
-        //     el.addEventListener("mouseenter", () => tween.play(), false);
-        //     el.addEventListener("mouseleave", () => tween.reverse(), false);
-        // });
+    function smoothChange(curr, target, timeDiff) {
+        const SPEED = 0.05;
+        const TOLERANCE = 0.1;
+        const leng = target - curr;
+        const rise = 0.8 * Math.sign(leng) * Math.cbrt(SPEED * timeDiff * Math.abs(leng) * Math.abs(leng));
+        if (Math.abs(rise) < TOLERANCE) {
+            return target;
+        }
+        return curr + rise;
+    }
+
+    function resizeCircle(timeDiff) {
+        circle.radius = smoothChange(circle.radius, circle.targetRadius, timeDiff);
     }
 
     function lerp(a, b, n) {

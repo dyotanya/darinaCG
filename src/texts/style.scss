@@ -1,0 +1,29 @@
+[data-animation="appear-by-line"] {
+    &.hidden {
+        display: none;
+    }
+
+    p {
+        margin: 0;
+        height: var(--line-height, 1em);
+        overflow: hidden;
+    }
+
+    span {
+        display: inline-block;
+        white-space: break-spaces;
+        padding-top: 1em;
+    }
+
+    @for $i from 1 through 10 {
+        p:nth-child(#{$i}) span {
+            transition: padding-top 0.8s ease $i * 0.1s;
+        }
+    }
+
+    &.shown {
+        span {
+            padding-top: 0;
+        }
+    }
+}
