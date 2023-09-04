@@ -3,20 +3,22 @@
     border-color: var(--page-color) !important;
 }
 
-.footerlink,
-.menubutton p,
-.burgersendmessagebtn * {
-    color: var(--yellow);
-}
+[data-style] {
+    &[data-style*="preserve-white"] {
+        color: var(--yellow) !important;
 
-.burgersendmessagebtn {
-    border-color: var(--yellow) !important;
-}
-
-.navbackunderline,
-.burgermenu,
-.menubutton {
-    background-color: var(--page-color);
+        * {
+            color: var(--yellow) !important;
+        }
+    }
+    
+    &[data-style*="preserve-border-white"] {
+        border-color: var(--yellow) !important;
+    }
+    
+    &[data-style*="set-background-color"] {
+        background-color: var(--page-color) !important;
+    }
 }
 
 .pageheading {
