@@ -14,7 +14,7 @@ export function usePreloader() {
     } else {
         indicator.classList.add('shown');
 
-        window.addEventListener('load', () => setTarget(100));
+        // window.addEventListener('load', () => setTarget(100));
         window.setPreloader = setTarget;
     }
 
