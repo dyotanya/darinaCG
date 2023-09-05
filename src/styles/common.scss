@@ -18,6 +18,10 @@
     font-variant-numeric: lining-nums tabular-nums;
 }
 
+body * {
+    user-select: none;
+}
+
 $pages: home, ai-concepts, dar-studio-render, about, educational, shop, contact;
 
 :root {

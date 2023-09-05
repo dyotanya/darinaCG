@@ -24,3 +24,12 @@ export const useOnResize = (handler, getCondition, delay = 200) => {
 
 export const prefersReducedMotion =
     window.matchMedia(`(prefers-reduced-motion: reduce)`) === true || window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
+
+const isDevEnv = window.location.href.includes('webflow.io');
+
+export function useContentBlock() {
+    if (!isDevEnv) {
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+        document.addEventListener('copy', (e) => e.preventDefault());
+    }
+}

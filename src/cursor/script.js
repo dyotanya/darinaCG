@@ -32,15 +32,7 @@ export function useCursor() {
         lastX: mouse.x,
         lastY: mouse.y,
     };
-    const dots = [];
     let prevTime;
-
-    // setInterval(() => {
-    //     if (dots.length >= 25) {
-    //         dots.shift();
-    //     }
-    //     dots.push({ x: circle.lastX, y: circle.lastY });
-    // }, 1);
 
     function onResize() {
         size.width = canvas.width = window.innerWidth * pixelRatio;
@@ -68,13 +60,6 @@ export function useCursor() {
         ctx.arc(circle.lastX, circle.lastY, circle.radius, 0, Math.PI * 2, false);
         ctx.fill();
         ctx.closePath();
-
-        // dots.forEach(({ x, y }) => {
-        //     ctx.beginPath();
-        //     ctx.arc(x, y, radius, 0, Math.PI * 2, false);
-        //     ctx.fill();
-        //     ctx.closePath();
-        // });
 
         prevTime = timestamp;
         requestAnimationFrame(render);
