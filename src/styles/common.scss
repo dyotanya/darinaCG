@@ -1,17 +1,19 @@
 :root {
-    --yellow: #FBF5E7;
+    --white: #FBF5E7;
+    --white-3: #F5EFE1;
     --red: #B64B37;
     --gray: #353636;
     --green: #135B41;
     --blue: #1B4C95;
     --black: #424646;
-    --yellow20: #FBF5E736;
+    --white20: #FBF5E736;
     --red20: #B64B3736;
     --gray20: #35363636;
     --green20: #135B4136;
     --blue20: #1B4C9536;
     --black20: #42464636;
     --besier-transition: cubic-bezier(.7,0,.45,1);
+    --transition-time: 0.6s;
 }
 
 * {

@@ -1,11 +1,11 @@
 :root {
-    --yellow: #FBF5E7;
+    --white: #FBF5E7;
     --red: #B64B37;
     --gray: #353636;
     --green: #135B41;
     --blue: #1B4C95;
     --black: #424646;
-    --yellow20: #FBF5E736;
+    --white20: #FBF5E736;
     --red20: #B64B3736;
     --gray20: #35363636;
     --green20: #135B4136;
@@ -14,21 +14,20 @@
 }
 
 body {
-    --transition-time: .6s;
     --bg: var(--red);
     --color: var(--red);
     --color20: var(--red20);
     --menu-border-color: var(--red);
 
     @media screen and (min-width: 992px) {
-        --menu-color: var(--yellow);
+        --menu-color: var(--white);
     }
     @media screen and (max-width: 991px) {
         --menu-color: var(--red);
     }
 
     &[class*="section-"] {
-        --bg: var(--yellow);
+        --bg: var(--white);
         --menu-border-color: var(--color);
         --menu-color: var(--color);
     }
@@ -94,7 +93,7 @@ body {
         background-color: var(--color);
 
         p {
-            color: var(--yellow) !important;
+            color: var(--white) !important;
         }
     }
     .sendmessagebtn {

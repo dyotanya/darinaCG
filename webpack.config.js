@@ -7,6 +7,7 @@ module.exports = (env) => ({
     instant: './instant.js',
     page: './page.js',
     darStudioRender: './darStudioRender.js',
+    about: './about.js',
   },
   mode: env.mode || 'development',
   watch: env.watch || false,

@@ -1,5 +1,5 @@
 .preloader {
-    --yellow: #FBF5E7;
+    --white: #FBF5E7;
     --red: #B64B37;
     --transition: 1.5s cubic-bezier(.7,0,.45,1);
     position: fixed;
@@ -8,7 +8,7 @@
     padding: 1em 1em 5em 1em;
     box-sizing: border-box;
     background-color: var(--red);
-    color: var(--yellow);
+    color: var(--white);
     font-family: 'Work Sans', sans-serif;
     letter-spacing: -0.015em;
     z-index: 9999;
@@ -27,7 +27,7 @@
         width: 100%;
         height: 100%;
         position: relative;
-        border-bottom: 1px dashed var(--yellow);
+        border-bottom: 1px dashed var(--white);
     }
 
     &__dots {
@@ -43,7 +43,7 @@
             display: block;
             width: 0.5em;
             height: 0.5em;
-            background-color: var(--yellow);
+            background-color: var(--white);
             top: 0;
         }
         &::before {

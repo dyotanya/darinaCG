@@ -5,15 +5,23 @@
 
 [data-style] {
     &[data-style*="preserve-white"] {
-        color: var(--yellow) !important;
+        color: var(--white) !important;
 
         * {
-            color: var(--yellow) !important;
+            color: var(--white) !important;
+        }
+    }
+
+    &[data-style*="preserve-white-3"] {
+        color: var(--white-3) !important;
+
+        * {
+            color: var(--white-3) !important;
         }
     }
     
     &[data-style*="preserve-border-white"] {
-        border-color: var(--yellow) !important;
+        border-color: var(--white) !important;
     }
     
     &[data-style*="set-background-color"] {

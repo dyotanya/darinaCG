@@ -1,0 +1,43 @@
+.workareastag {
+    transition: border-color var(--transition-time);
+
+    * {
+        transition: color var(--transition-time);
+    }
+
+    &[data-section="3d"] {
+        --hover-color: var(--green);
+    }
+    &[data-section="ai"] {
+        --hover-color: var(--red);
+    }
+    &[data-section="educational"] {
+        --hover-color: var(--blue);
+    }
+    &[data-section="shop"] {
+        --hover-color: var(--red);
+    }
+
+    .entericon {
+        overflow: hidden;
+        box-sizing: content-box;
+        place-items: center;
+        display: grid;
+        width: 0;
+        padding-left: 0;
+        transition: width var(--transition-time) ease, padding-left var(--transition-time) ease;
+    }
+
+    &:hover {
+        border-color: var(--hover-color) !important;
+
+        .entericon {
+            width: 0.6em;
+            padding-left: 0.1em;
+        }
+
+        * {
+            color: var(--hover-color);
+        }
+    }
+}
