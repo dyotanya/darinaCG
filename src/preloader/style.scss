@@ -7,12 +7,15 @@
     padding: 1em 1em 5em 1em;
     box-sizing: border-box;
     background-color: var(--preloader-color, #B64B37);
-    color: var(--white);
     font-family: 'Work Sans', sans-serif;
     letter-spacing: -0.015em;
     z-index: 9999;
 
     transition: width var(--transition);
+
+    * {
+        color: var(--white) !important;
+    }
 
     @media (prefers-reduced-motion: reduce) {
         transition: opacity var(--transition);
