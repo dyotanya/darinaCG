@@ -56,16 +56,16 @@ body {
         --color: var(--red);
         --color20: var(--red20);
     }
+
+    --page-color: var(--color);
 }
 
 .content {
     *:not(.abouttag) {
-        // transition: color var(--transition-time), border-color var(--transition-time);
         color: var(--color) !important;
         border-color: var(--color) !important;
     }
     path {
-        // transition: fill var(--transition-time);
         fill: var(--color);
     }
     .keyboardletter {

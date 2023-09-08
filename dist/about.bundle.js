@@ -1,0 +1,1 @@
+(()=>{"use strict";!function(){const e=document.querySelector('[data-style="runner-container"]');new IntersectionObserver((e=>{e.forEach((e=>{e.isIntersecting?e.target.classList.add("animated"):e.target.classList.remove("animated")}))})).observe(e)}()})();

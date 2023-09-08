@@ -1,34 +1,3 @@
-*, a {
-    color: var(--page-color);
-    border-color: var(--page-color) !important;
-}
-
-[data-style] {
-    &[data-style*="preserve-white"] {
-        color: var(--white) !important;
-
-        * {
-            color: var(--white) !important;
-        }
-    }
-
-    &[data-style*="preserve-white-3"] {
-        color: var(--white-3) !important;
-
-        * {
-            color: var(--white-3) !important;
-        }
-    }
-    
-    &[data-style*="preserve-border-white"] {
-        border-color: var(--white) !important;
-    }
-    
-    &[data-style*="set-background-color"] {
-        background-color: var(--page-color) !important;
-    }
-}
-
 .pageheading {
     span {
         display: inline-block;
