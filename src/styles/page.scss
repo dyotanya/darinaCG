@@ -8,3 +8,18 @@
         }
     }
 }
+
+*, a {
+    &:not([data-style*="preserve-color"]) {
+        color: var(--color);
+    }
+    &:not([data-style*="preserve-border-color"]) {
+        border-color: var(--page-color) !important;
+    }
+    [data-style*="preserve-color"] * {
+        color: inherit;
+    }
+    &[data-style*="set-background-color"] {
+        background-color: var(--page-color);
+    }
+}

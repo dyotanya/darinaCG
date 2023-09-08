@@ -42,18 +42,3 @@ $pages: home, ai-concepts, dar-studio-render, about, educational, shop, contact;
         }
     }
 }
-
-*, a {
-    &:not([data-style*="preserve-color"]) {
-        color: var(--page-color, var(--color), inherit);
-    }
-    &:not([data-style*="preserve-border-color"]) {
-        border-color: var(--page-color) !important;
-    }
-    [data-style*="preserve-color"] * {
-        color: inherit;
-    }
-    &[data-style*="set-background-color"] {
-        background-color: var(--page-color);
-    }
-}
