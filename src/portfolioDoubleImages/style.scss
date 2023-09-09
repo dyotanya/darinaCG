@@ -1,0 +1,8 @@
+[data-style="fade-on-hover"] {
+    opacity: 1;
+    transition: opacity var(--transition-time);
+
+    &:hover {
+        opacity: 0;
+    }
+}
