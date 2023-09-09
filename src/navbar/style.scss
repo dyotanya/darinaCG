@@ -1,0 +1,18 @@
+.navigation {
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 1px;
+        background-color: var(--page-color);
+        opacity: 0;
+        transition: opacity var(--transition-time);
+    }
+
+    &.bordered::after {
+        opacity: 1;
+    }
+}

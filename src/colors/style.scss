@@ -49,8 +49,11 @@ body {
         --color20: var(--blue20);
     }
     &.section-shop {
-        --color: var(--black);
-        --color20: var(--black20);
+        // TEMPORARY - while the shop is "coming soon"
+        // --color: var(--black);
+        // --color20: var(--black20);
+        --color: var(--blue);
+        --color20: var(--blue20);
     }
     &.section-contact {
         --color: var(--red);

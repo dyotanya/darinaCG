@@ -15,7 +15,7 @@ export function useCursor() {
     const ctx = canvas.getContext("2d");
     document.body.appendChild(canvas);
 
-    const interactiveElementSelectors = 'a, [data-animation="cursor-hover"]';
+    const interactiveElementSelectors = 'a, [data-animation="cursor-hover"], .portfolioimage';
     const elems = document.querySelectorAll(interactiveElementSelectors);
 
     const size = {
@@ -54,12 +54,14 @@ export function useCursor() {
         resizeCircle(timeDiff);
 
         ctx.fillStyle = "white";
+        ctx.strokeStyle = "white";
+        ctx.lineWidth = 3;
         
         ctx.clearRect(0, 0, size.width, size.height);
         ctx.beginPath();
         ctx.arc(circle.lastX, circle.lastY, circle.radius, 0, Math.PI * 2, false);
-        ctx.fill();
         ctx.closePath();
+        ctx.fill();
 
         prevTime = timestamp;
         requestAnimationFrame(render);

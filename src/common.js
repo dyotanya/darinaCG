@@ -33,3 +33,8 @@ export function useContentBlock() {
         document.addEventListener('copy', (e) => e.preventDefault());
     }
 }
+
+export function setScrollbarWidth() {
+    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.setProperty('--scroll-bar-width', `${scrollBarWidth}px`);
+}

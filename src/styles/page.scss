@@ -23,3 +23,7 @@
         background-color: var(--page-color);
     }
 }
+
+.popup-opened .navigation {
+    width: calc(100vw - var(--scroll-bar-width));
+}

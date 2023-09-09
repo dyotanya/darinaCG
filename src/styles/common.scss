@@ -24,6 +24,15 @@ body * {
     user-select: none;
 }
 
+html {
+    overflow: auto;
+}
+  
+.popup-opened {
+    overflow: hidden;
+    padding-right: var(--scroll-bar-width, 0);
+}
+
 $pages: home, ai-concepts, dar-studio-render, about, educational, shop, contact;
 
 :root {
