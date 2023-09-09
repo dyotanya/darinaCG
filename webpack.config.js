@@ -6,6 +6,7 @@ module.exports = (env) => ({
     index: './index.js',
     instant: './instant.js',
     page: './page.js',
+    ai: './ai.js',
     darStudioRender: './darStudioRender.js',
     about: './about.js',
   },

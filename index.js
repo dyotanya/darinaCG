@@ -1,5 +1,5 @@
 import { useMenu } from "./src/menu/script";
-import { useZomingPhotos } from "./src/zoomingPhotos/script";
+import { useParallaxingPhotos } from "./src/parallaxingPhotos/script";
 import { useGlitch } from "./src/glitch/script";
 import { useScrollColors } from "./src/colors/script";
 import { useCursor } from "./src/cursor/script";
@@ -16,7 +16,7 @@ const setMenuSection = useMenu();
 const glitchSection = useGlitch();
 useScrollColors(glitchSection, setMenuSection);
 useBurgerMenu();
-useZomingPhotos();
+useParallaxingPhotos();
 useCursor();
 useRunningLine();
 useAppearByLine();

@@ -1,3 +1,8 @@
-[data-animation="scroll-zoom"] {
+.portfoliophotowrapper {
+    overflow: hidden;
+}
+
+[data-animation="scroll-zoom"],
+.portfolioimage {
     transform: scale(var(--zoom, 1));
 }

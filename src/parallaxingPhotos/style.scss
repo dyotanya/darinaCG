@@ -1,0 +1,9 @@
+.portfoliophotowrapper {
+    overflow: hidden;
+}
+
+[data-animation="parallax"],
+.portfolioimage {
+    transform-origin: bottom center;
+    transform: scale(var(--zoom, 1)) translateY(calc(1% * var(--shift, 0)));
+}

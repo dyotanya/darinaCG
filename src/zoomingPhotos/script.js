@@ -5,7 +5,7 @@ export function useZomingPhotos() {
     const MAX_ZOOM = 1.2;
     const ZOOM_RANGE = MAX_ZOOM - MIN_ZOOM;
     const observer = new IntersectionObserver(handleIntersection);
-    const images = document.querySelectorAll('[data-animation="scroll-zoom"]');
+    const images = document.querySelectorAll('[data-animation="scroll-zoom"], .portfolioimage');
     images.forEach((image) => observer.observe(image));
 
     const watching = new Set([]);

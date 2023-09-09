@@ -77,7 +77,7 @@ export function useCursor() {
         window.addEventListener("resize", onResize, false);
 
         elems.forEach((el) => {
-            el.addEventListener("mouseenter", () => console.log('enter') || (circle.targetRadius = HOVER_RADIUS), false);
+            el.addEventListener("mouseenter", () => circle.targetRadius = HOVER_RADIUS, false);
             el.addEventListener("mouseleave", () => circle.targetRadius = RADIUS, false);
         });
     }

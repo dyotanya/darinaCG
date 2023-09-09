@@ -1,0 +1,3 @@
+.portfoliophotowrapper{overflow:hidden}[data-animation=parallax],.portfolioimage{transform-origin:bottom center;transform:scale(var(--zoom, 1)) translateY(calc(1% * var(--shift, 0)))}
+.portfolioswitchitem{position:relative}.portfolioswitchitem::after{content:"";display:block;position:absolute;top:0;left:0;height:.25em;width:2.5em;background-color:var(--page-color);opacity:0;transition:opacity var(--transition-time)}.portfolioswitchitem.active{pointer-events:none}.portfolioswitchitem.active::after{opacity:1}.portfoliocategory{opacity:1;transition:opacity var(--transition-time)}.portfoliocategory.preparing{position:absolute;top:0;left:0;opacity:0}.portfoliocategory.fading{opacity:0}
+

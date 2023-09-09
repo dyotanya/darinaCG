@@ -1,0 +1,40 @@
+.portfolioswitchitem {
+    position: relative;
+
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 0.25em;
+        width: 2.5em;
+        background-color: var(--page-color);
+        opacity: 0;
+        transition: opacity var(--transition-time);
+    }
+
+    &.active {
+        pointer-events: none;
+
+        &::after {
+            opacity: 1;
+        }
+    }
+}
+
+.portfoliocategory {
+    opacity: 1;
+    transition: opacity var(--transition-time);
+
+    &.preparing {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+    }
+
+    &.fading {
+        opacity: 0;
+    }
+}
