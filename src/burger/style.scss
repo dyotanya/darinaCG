@@ -1,11 +1,3 @@
-html {
-    overflow: auto;
-}
-.scroll-blocked {
-    overflow: hidden;
-    padding-right: var(--scroll-bar-width, 0);
-}
-
 .burgermenu {
     background-color: var(--bg);
 

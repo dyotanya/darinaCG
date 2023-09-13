@@ -38,3 +38,7 @@ export function setScrollbarWidth() {
     const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
     document.documentElement.style.setProperty('--scroll-bar-width', `${scrollBarWidth}px`);
 }
+
+export const blockScroll = () => document.documentElement.classList.add('popup-opened');
+
+export const unblockScroll = () => document.documentElement.classList.remove('popup-opened');
