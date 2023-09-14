@@ -1,15 +1,21 @@
 :root {
     --white: #FBF5E7;
-    --red: #B64B37;
-    --gray: #353636;
-    --green: #135B41;
-    --blue: #1B4C95;
-    --black: #424646;
+    --white50: #FBF5E77a;
     --white20: #FBF5E736;
+    --red: #B64B37;
+    --red50: #B64B377a;
     --red20: #B64B3736;
+    --gray: #353636;
+    --gray50: #3536367a;
     --gray20: #35363636;
+    --green: #135B41;
+    --green50: #135B417a;
     --green20: #135B4136;
+    --blue: #1B4C95;
+    --blue50: #1B4C957a;
     --blue20: #1B4C9536;
+    --black: #424646;
+    --black50: #4246467a;
     --black20: #42464636;
 }
 
@@ -35,18 +41,22 @@ body {
     &.section-ai {
         --color: var(--red);
         --color20: var(--red20);
+        --color50: var(--red50);
     }
     &.section-3d {
         --color: var(--green);
         --color20: var(--green20);
+        --color50: var(--green50);
     }
     &.section-about {
         --color: var(--black);
         --color20: var(--black20);
+        --color50: var(--black50);
     }
     &.section-educational {
         --color: var(--blue);
         --color20: var(--blue20);
+        --color50: var(--blue50);
     }
     &.section-shop {
         // TEMPORARY - while the shop is "coming soon"
@@ -54,10 +64,12 @@ body {
         // --color20: var(--black20);
         --color: var(--blue);
         --color20: var(--blue20);
+        --color50: var(--blue50);
     }
     &.section-contact {
         --color: var(--red);
         --color20: var(--red20);
+        --color50: var(--red50);
     }
 }
 
@@ -74,6 +86,16 @@ body {
 
         &.glitch {
             background-color: var(--color20) !important;
+        }
+    }
+    // TODO: remove with the "coming soon"
+    .comingsoonform {
+        input {
+            border-color: var(--color50) !important;
+
+            &::placeholder {
+                color: var(--color50) !important;
+            }
         }
     }
 }
