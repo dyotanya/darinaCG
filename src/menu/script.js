@@ -6,7 +6,7 @@ export function useMenu() {
     const mobileMenu = document.querySelector('.mobilemenu');
     const linksElements = {
         desktop: document.querySelector('.menulinks'),
-        mobile: document.querySelector('.mobilemenulinks') || document.querySelector('.menulinks'),
+        mobile: document.querySelector('.tabletmenulinks'),
     }
 
     let linksElement;
@@ -21,7 +21,7 @@ export function useMenu() {
             linksElement = linksElements.desktop;
             document.removeEventListener('scroll', shrinkMenu);
         } else {
-            linksElement = linksElements.mobile;
+            linksElement = linksElements.mobile || linksElements.desktop;
             document.addEventListener('scroll', shrinkMenu);
             shrinkMenu();
         }

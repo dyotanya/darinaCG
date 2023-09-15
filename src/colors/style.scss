@@ -119,6 +119,10 @@ body {
             color: var(--white) !important;
         }
     }
+    .mobilemenuborder {
+        transition: border-color var(--transition-time);
+        border-color: var(--menu-color);
+    }
     .sendmessagebtn {
         transition: border-color var(--transition-time);
         border-color: var(--menu-color);
