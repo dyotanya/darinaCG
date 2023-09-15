@@ -8,7 +8,8 @@ import './style.scss';
 */
 
 export function useScrollColors(glitchSection, setMenuSection) {
-    const sectionBreaks = document.querySelectorAll('[data-animation="sections"]');
+    const sectionBreaks = [...document.querySelectorAll('[data-animation="sections"]')]
+        .filter((sectionBreak) => sectionBreak.dataset.section !== 'educational');  // TODO: remove with the "coming soon"
     const INITIAL_CHECK_MARGIN = 25;
     const SECTION_PREFIX = 'section-';
 

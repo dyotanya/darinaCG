@@ -90,12 +90,16 @@ body {
     }
     // TODO: remove with the "coming soon"
     .comingsoonform {
-        input {
+        input[type="text"] {
             border-color: var(--color50) !important;
 
             &::placeholder {
                 color: var(--color50) !important;
             }
+        }
+        .comingsoonformbutton {
+            transition: background-color var(--transition-time);
+            background-color: var(--color);
         }
     }
 }
