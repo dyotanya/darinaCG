@@ -23,14 +23,14 @@
         }
     }
 
-    .mobilemenulanguages {
-        opacity: 1;
-        transition: opacity var(--transition-time);
+    // .mobilemenulanguages {
+    //     opacity: 1;
+    //     transition: opacity var(--transition-time);
 
-        @media screen and (max-width: 767px) {
-            visibility: hidden;
-        }
-    }
+    //     @media screen and (max-width: 767px) {
+    //         visibility: hidden;
+    //     }
+    // }
 
     &.shrink {
         height: 25vw;
@@ -43,22 +43,18 @@
             transform: translateY(-15%);
 
             @media screen and (max-width: 767px) {
-                transform: translateY(-75%);
+                transform: translateY(-88%);
             }
         }
 
         img {
-            transform: translate(-50%) scale(0.7);
-
-            @media screen and (max-width: 767px) {
-                transform: translate(-50%) scale(0);
-            }
+            transform: translate(-50%) scale(0);
         }
 
-        .mobilemenulanguages {
-            opacity: 0;
-            pointer-events: none;
-        }
+        // .mobilemenulanguages {
+        //     opacity: 0;
+        //     pointer-events: none;
+        // }
     }
 
     .tabletmenulinks {
