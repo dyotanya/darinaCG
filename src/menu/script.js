@@ -8,6 +8,7 @@ export function useMenu() {
         desktop: document.querySelector('.menulinks'),
         mobile: document.querySelector('.tabletmenulinks'),
     }
+    const wrapBreakpoint = document.body.clientWidth * 0.2;
 
     let linksElement;
     let links;
@@ -42,7 +43,7 @@ export function useMenu() {
     }
 
     function shrinkMenu() {
-        if (window.scrollY > 0) {
+        if (window.scrollY > wrapBreakpoint) {
             mobileMenu.classList.add('shrink');
         } else {
             mobileMenu.classList.remove('shrink');
