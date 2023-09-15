@@ -1,4 +1,5 @@
-.pageheading {
+.pageheading,
+[data-style="first-letters"] {
     span {
         display: inline-block;
         white-space: break-spaces;
