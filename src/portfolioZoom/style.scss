@@ -30,15 +30,15 @@
             width: 0%;
             height: 0.15em;
             background-color: var(--page-color);
-            transition: transform var(--transition-time) var(--besier-transition);
+            transition: width var(--transition-time) var(--besier-transition);
         }
 
         &.prev::after {
-            left: 0;
+            right: 0;
         }
 
         &.next::after {
-            right: 0;
+            left: 0;
         }
 
         &:hover {
