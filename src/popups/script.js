@@ -13,6 +13,11 @@ export function usePopups() {
 
         trigger.addEventListener('click', () => open(popup));
         closeBtn.addEventListener('click', () => close(popup));
+        popup.addEventListener('click', (event) => {
+            if (event?.target === popup) {
+                close(popup);
+            }
+        });
     });
 
     function open(popup) {
