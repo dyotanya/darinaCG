@@ -15,7 +15,7 @@
     transition: height 1s var(--besier-transition);
 
     .mobilemenutitle {
-        transition: color var(--transition-time), transform 1s var(--besier-transition);
+        transition: color var(--transition-time), transform 1s var(--besier-transition), opacity 1s;
 
         img {
             transform-origin: center bottom;
@@ -43,7 +43,8 @@
             transform: translateY(-15%);
 
             @media screen and (max-width: 767px) {
-                transform: translateY(-88%);
+                opacity: 0.5;
+                transform: translateY(-80%);
             }
         }
 
@@ -51,10 +52,12 @@
             transform: translate(-50%) scale(0);
         }
 
-        // .mobilemenulanguages {
-        //     opacity: 0;
-        //     pointer-events: none;
-        // }
+        @media screen and (max-width: 767px) {
+            .mobilemenulanguages {
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
     }
 
     .tabletmenulinks {

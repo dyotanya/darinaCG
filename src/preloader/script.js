@@ -1,3 +1,5 @@
+import { blockScroll, unblockScroll } from '../common';
+
 import './style.scss';
 
 export function usePreloader() {
@@ -8,27 +10,49 @@ export function usePreloader() {
     let current = 0;
     let updateTimeout = null;
 
+    const scriptBlock = preloader.closest('.preloaderscript');
+    const isMainPage = scriptBlock?.dataset?.mainPage === 'true';
+
     if (isPreloaded()) {
         hidePreloader(true);
         window.setPreloader = () => {};
     } else {
+        if (isMainPage) {
+            preloader.classList.add('main-page');
+        }
         indicator.classList.add('shown');
+        blockScroll();
 
         window.addEventListener('load', () => setTarget(100));
         window.setPreloader = setTarget;
+    }
+
+    function removePreloader() {
+        unblockScroll();
+        preloader.remove();
+        setIsPreloaded();
     }
 
     function hidePreloader(isShortcut = false) {
         if (isShortcut) {
             return preloader.remove();
         }
-        preloader.addEventListener('transitionend', (event) => {
+        const onFirstTransitionEnd = (event) => {
             if (event.target !== preloader) {
                 return;
             }
-            preloader.remove();
-            setIsPreloaded(true);
-        });
+            if (!isMainPage) {
+                return removePreloader();
+            }
+            preloader.removeEventListener('transitionend', onFirstTransitionEnd);
+            preloader.addEventListener('transitionend', (event) => {
+                if (event.target === preloader) {
+                    removePreloader();
+                }
+            });
+            preloader.classList.add('transparent');
+        };
+        preloader.addEventListener('transitionend', onFirstTransitionEnd);
         setTimeout(() => preloader.classList.add('hidden'), 500);
     }
 
