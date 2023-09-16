@@ -121,6 +121,7 @@ body {
     .mobilemenubutton {
         transition: background-color var(--transition-time);
         background-color: var(--color);
+        border-color: transparent !important;
 
         p {
             color: var(--white) !important;
