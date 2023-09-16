@@ -115,13 +115,7 @@ html {
             }
     
             @media screen and (max-width: 991px) {
-                height: 35vw;
-            }
-            @media screen and (max-width: 767px) {
-                height: 75vw;
-            }
-            @media screen and (max-width: 478px) {
-                height: 95vw;
+                height: 0;
             }
         }
 
