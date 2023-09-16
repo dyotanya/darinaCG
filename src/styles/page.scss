@@ -1,5 +1,4 @@
-.pageheading,
-[data-style="first-letters"] {
+.pageheading {
     span {
         display: inline-block;
         white-space: break-spaces;
@@ -7,6 +6,7 @@
         &::first-letter {
             font-family: 'Arizonia', serif;
             font-size: 1.125em;
+            margin-right: 0.025em;
         }
     }
 }
