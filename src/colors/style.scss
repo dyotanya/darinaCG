@@ -101,9 +101,9 @@ body {
             transition: background-color var(--transition-time);
             background-color: var(--color);
         }
-        .cominsoonprogress  {
-            background-color: var(--color);
-        }
+    }
+    .cominsoonprogress  {
+        background-color: var(--color);
     }
 }
 
@@ -155,5 +155,5 @@ body {
 }
 
 .burgermenu {
-    background-color: var(--color);
+    background-color: var(--color) !important;
 }
