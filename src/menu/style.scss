@@ -23,14 +23,10 @@
         }
     }
 
-    // .mobilemenulanguages {
-    //     opacity: 1;
-    //     transition: opacity var(--transition-time);
-
-    //     @media screen and (max-width: 767px) {
-    //         visibility: hidden;
-    //     }
-    // }
+    .mobilemenulanguages {
+        opacity: 1;
+        transition: opacity var(--transition-time);
+    }
 
     &.shrink {
         height: 25vw;
