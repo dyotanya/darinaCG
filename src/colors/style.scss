@@ -2,6 +2,7 @@ body {
     --bg: var(--red);
     --color: var(--red);
     --color20: var(--red20);
+    --color50: var(--red50);
     --menu-border-color: var(--red);
 
     @media screen and (min-width: 992px) {
@@ -135,4 +136,9 @@ body {
 
 .burgermenu {
     background-color: var(--color) !important;
+
+    .burgermenubutton {
+        color: var(--color);
+        border-color: var(--color);
+    }
 }
