@@ -15,7 +15,11 @@
     transition: height 1s var(--besier-transition);
 
     .mobilemenutitle {
-        transition: color var(--transition-time), transform 1s var(--besier-transition), opacity 1s;
+        transition:
+            color var(--transition-time),
+            top 1s var(--besier-transition),
+            bottom 1s var(--besier-transition),
+            opacity 1s;
 
         img {
             transform-origin: center bottom;
@@ -32,15 +36,16 @@
         height: 25vw;
 
         @media screen and (max-width: 767px) {
-            height: 20vw;
+            height: 18vw;
         }
 
         .mobilemenutitle {
-            transform: translateY(-15%);
+            top: -0.1em;
 
             @media screen and (max-width: 767px) {
                 opacity: 0.5;
-                transform: translateY(-80%);
+                top: auto;
+                bottom: 0.5em;
             }
         }
 
