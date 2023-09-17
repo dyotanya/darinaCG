@@ -30,7 +30,7 @@ $pages: home, ai-concepts, dar-studio-render, about, educational, shop, contact;
 }
 
 [data-style="first-letters"] {
-    span {
+    span:not([data-style="not-first-letter"]) {
         display: inline-block;
         white-space: break-spaces;
 
