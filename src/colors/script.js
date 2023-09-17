@@ -49,8 +49,8 @@ export function useScrollColors(glitchSection, setMenuSection) {
         let bottomMargin = '-50% 0% 0% 0%';
 
         if (!isDesktop) {
-            topMargin = '0% 0% -80% 0%';
-            bottomMargin = '-20% 0% 0% 0%';
+            topMargin = '0% 0% -30% 0%';
+            bottomMargin = '-70% 0% 0% 0%';
         }
 
         const topObserver = new IntersectionObserver(handleTopIntersection, { rootMargin: topMargin, threshold: 1 });
