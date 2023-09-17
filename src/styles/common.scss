@@ -41,3 +41,7 @@ $pages: home, ai-concepts, dar-studio-render, about, educational, shop, contact;
         }
     }
 }
+
+[data-style*="fix-numbers"] {
+    font-variant-numeric: lining-nums;
+}
