@@ -42,7 +42,9 @@ html {
     &__dots {
         position: absolute;
         top: 50%;
-        width: 100%;
+        width: calc(100% - 2em);
+        transform: translateY(-0.25em);
+        left: 1em;
 
         transition: opacity var(--transition);
 

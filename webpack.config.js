@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = (env) => ({
   entry: {
     index: './index.js',
-    instant: './instant.js',
+    preloader: './preloader.js',
     page: './page.js',
     ai: './ai.js',
     darStudioRender: './darStudioRender.js',

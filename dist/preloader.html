@@ -13,21 +13,23 @@
     </style>
 </head>
 <body>
-    <div class="preloader main-page">
-        <div class="preloader__container" data-style="preserve-border-color">
+    <div class="preloaderscript" data-main-page="true">
+        <div class="preloader">
             <div class="preloader__dots"></div>
-            <div class="preloader__text">
-                Hello, I'm Darina.<br>
-                I create 3D images and AI concepts<br>
-                for scenography, architectural<br>
-                design and products. //
+            <div class="preloader__container" data-style="preserve-border-color">
+                <div class="preloader__text">
+                    Hello, I'm Darina.<br>
+                    I create 3D images and AI concepts<br>
+                    for scenography, architectural<br>
+                    design and products. //
+                </div>
+                <div class="preloader__indicator">0%</div>
             </div>
-            <div class="preloader__indicator">0%</div>
         </div>
     </div>
 
-    <link rel="stylesheet" href="./instant.css">
-    <script src="./instant.bundle.js"></script>
+    <link rel="stylesheet" href="./preloader.css">
+    <script src="./preloader.bundle.js"></script>
 
     <script>
         setTimeout(() => setPreloader(5), 250);

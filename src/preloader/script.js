@@ -23,7 +23,7 @@ export function usePreloader() {
         indicator.classList.add('shown');
         blockScroll();
 
-        // window.addEventListener('load', () => setTarget(100));
+        window.addEventListener('load', () => setTarget(100));
         window.setPreloader = setTarget;
     }
 

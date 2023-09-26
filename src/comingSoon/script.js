@@ -1,4 +1,4 @@
-const CATEGORIES = ['guides', 'tutorials', 'libraries', 'printed are', 'walpapers', 'cources', 'trainings'];
+const CATEGORIES = ['guides', 'tutorials', 'libraries', 'printed art', 'walpapers', 'cources', 'trainings'];
 
 export function useComingSoon() {
     const text = document.querySelector('.comingsooncategorytext');

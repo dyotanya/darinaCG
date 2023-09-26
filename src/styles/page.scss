@@ -1,7 +1,7 @@
 .pageheading {
     span {
         display: inline-block;
-        white-space: break-spaces;
+        white-space: pre;
 
         &::first-letter {
             font-family: 'Arizonia', serif;
