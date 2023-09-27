@@ -1,5 +1,7 @@
 import { blockScroll, unblockScroll } from '../common';
 
+import './style.scss';
+
 export function usePopups() {
     const popups = document.querySelectorAll('[data-popup-id]');
 
