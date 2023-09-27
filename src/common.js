@@ -34,9 +34,20 @@ export function useContentBlock() {
     }
 }
 
-export function setScrollbarWidth() {
-    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
-    document.documentElement.style.setProperty('--scroll-bar-width', `${scrollBarWidth}px`);
+export function setScrollBarWidthListener() {
+    if (window.scrollBarListener) {
+        return;
+    }
+    window.scrollBarListener = new ResizeObserver(() => {
+        const currentValue = document.documentElement.style.getPropertyValue('--scroll-bar-width');
+        console.log('currentValue', currentValue);
+        const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+        console.log('scrollBarWidth', scrollBarWidth);
+        if (currentValue !== `${scrollBarWidth}px`) {
+            document.documentElement.style.setProperty('--scroll-bar-width', `${scrollBarWidth}px`);
+        }
+    });
+    window.scrollBarListener.observe(document.documentElement);
 }
 
 export const blockScroll = () => document.documentElement.classList.add('popup-opened');

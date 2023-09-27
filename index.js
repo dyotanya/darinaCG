@@ -7,13 +7,13 @@ import { useRunningLine } from "./src/runningLine/script";
 import { useBurgerMenu } from "./src/burger/script";
 import { useAppearByLine } from "./src/texts/script";
 import { useComingSoon } from "./src/comingSoon/script";
-import { useContentBlock, setScrollbarWidth } from "./src/common";
+import { useContentBlock, setScrollBarWidthListener } from "./src/common";
 
 import './src/styles/common.scss';
 import './src/styles/home.scss';
 
 useContentBlock();
-setScrollbarWidth();
+setScrollBarWidthListener();
 const setMenuSection = useMenu();
 const glitchSection = useGlitch();
 useScrollColors(glitchSection, setMenuSection);
