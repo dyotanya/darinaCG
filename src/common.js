@@ -40,9 +40,7 @@ export function setScrollBarWidthListener() {
     }
     window.scrollBarListener = new ResizeObserver(() => {
         const currentValue = document.documentElement.style.getPropertyValue('--scroll-bar-width');
-        console.log('currentValue', currentValue);
         const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
-        console.log('scrollBarWidth', scrollBarWidth);
         if (currentValue !== `${scrollBarWidth}px`) {
             document.documentElement.style.setProperty('--scroll-bar-width', `${scrollBarWidth}px`);
         }
