@@ -20,7 +20,11 @@ export function usePortfolioZoom() {
         const sources = [...images].map((image) => image.getAttribute('src'));
 
         images.forEach((image, index) => {
-            image.addEventListener('click', () => openPopup(index, sources));
+            image.addEventListener('click', () => {
+                if (!getIsMobile()) {
+                    openPopup(index, sources);
+                }
+            });
         });
     }
 
