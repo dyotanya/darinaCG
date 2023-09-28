@@ -1,3 +1,5 @@
+import { getIsMobile } from '../common';
+
 import './style.scss';
 
 export function usePortfolioZoom() {
