@@ -1,4 +1,4 @@
-import { getIsMobile } from '../common';
+import { getIsMobile, animate } from '../common';
 
 import './style.scss';
 
@@ -31,19 +31,17 @@ export function usePortfolioZoom() {
     }
 
     function showPopup() {
-        popup.classList.add('shown');
-        setTimeout(() => popup.classList.add('visible'), 5);
+        animate(popup, { addClass: 'shown', timeout: 5 })
+            .then((popup) => popup.classList.add('visible'));
         document.documentElement.classList.add('popup-opened');
     }
 
     function hidePopup() {
-        const onInvisible = () => {
-            popup.removeEventListener('transitionend', onInvisible);
-            popup.classList.remove('shown');
-            document.documentElement.classList.remove('popup-opened');
-        };
-        popup.addEventListener('transitionend', onInvisible);
-        popup.classList.remove('visible');
+        animate(popup, { removeClass: 'visible' })
+            .then((popup) => {
+                popup.classList.remove('shown');
+                document.documentElement.classList.remove('popup-opened');
+            });
     }
 
     function openPopup(index, sources) {

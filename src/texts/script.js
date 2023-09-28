@@ -1,4 +1,4 @@
-import { prefersReducedMotion } from '../common';
+import { prefersReducedMotion, animate } from '../common';
 
 import './style.scss';
 
@@ -32,12 +32,13 @@ export function useAppearByLine() {
     elements.forEach(initDuplicate);
 
     function showLines(element) {
-        element.lastSpan.addEventListener('transitionend', () => {
-            element.original.classList.remove('hidden');
-            element.remove();
-        });
         resizeObserver.unobserve(element);
-        element.classList.add('shown');
+
+        animate(element.lastSpan, { action: () => element.classList.add('shown') })
+            .then(() => {
+                element.original.classList.remove('hidden');
+                element.remove();
+            });
     }
 
     function initDuplicate(element) {

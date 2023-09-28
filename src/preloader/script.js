@@ -1,4 +1,4 @@
-import { blockScroll, unblockScroll } from '../common';
+import { blockScroll, unblockScroll, animate } from '../common';
 
 import './style.scss';
 
@@ -31,29 +31,23 @@ export function usePreloader() {
         unblockScroll();
         preloader.remove();
         setIsPreloaded();
+        return Promise.resolve();
     }
 
     function hidePreloader(isShortcut = false) {
         if (isShortcut) {
             return preloader.remove();
         }
-        const onFirstTransitionEnd = (event) => {
-            if (event.target !== preloader) {
-                return;
-            }
-            if (!isMainPage) {
-                return removePreloader();
-            }
-            preloader.removeEventListener('transitionend', onFirstTransitionEnd);
-            preloader.addEventListener('transitionend', (event) => {
-                if (event.target === preloader) {
-                    removePreloader();
-                }
-            });
-            preloader.classList.add('transparent');
-        };
-        preloader.addEventListener('transitionend', onFirstTransitionEnd);
-        setTimeout(() => preloader.classList.add('hidden'), 500);
+        setTimeout(() => {
+            animate(preloader, { addClass: 'hidden' })
+                .then(() => {
+                    if (!isMainPage) {
+                        return removePreloader();
+                    }
+                    animate(preloader, { addClass: 'transparent' })
+                        .then(removePreloader);
+                });
+        }, 500);
     }
 
     function setTarget(value) {

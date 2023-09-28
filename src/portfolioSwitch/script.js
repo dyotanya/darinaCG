@@ -1,3 +1,4 @@
+import { animate } from '../common';
 import './style.scss';
 
 export const AI_CATEGORIES = ['retails', 'exterior', 'interior', 'fashion', 'product'];
@@ -29,16 +30,13 @@ export function usePortfolioSwitch(categories = DAR_CATEGORIES) {
     }
 
     function changeBlock(category) {
-        const showActive = () => {
-            console.log('end');
-            blocks[activeCategory].removeEventListener('transitionend', showActive);
-            blocks[activeCategory].classList.add('hidden');
-            blocks[category].classList.remove('preparing');
-            blocks[activeCategory].classList.remove('fading');
-            activeCategory = category;
-        };
-        blocks[activeCategory].addEventListener('transitionend', showActive);
-        blocks[activeCategory].classList.add('fading');
+        animate(blocks[activeCategory], { addClass: 'fading' })
+            .then((block) => {
+                block.classList.add('hidden');
+                blocks[category].classList.remove('preparing');
+                block.classList.remove('fading');
+                activeCategory = category;
+            });
         blocks[category].classList.add('preparing');
         blocks[category].classList.remove('hidden');
     }

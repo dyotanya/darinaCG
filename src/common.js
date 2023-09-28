@@ -53,3 +53,34 @@ export function setScrollBarWidthListener() {
 export const blockScroll = () => document.documentElement.classList.add('popup-opened');
 
 export const unblockScroll = () => document.documentElement.classList.remove('popup-opened');
+
+export const animate = (element, options) => {
+    const { addClass, removeClass, action, timeout } = options;
+
+    return new Promise((res) => {
+        const onTransitionEnd = () => {
+            element.removeEventListener('transitionend', onTransitionEnd);
+            res(element);
+        };
+
+        element.addEventListener('transitionend', onTransitionEnd);
+
+        if (timeout) {
+            setTimeout(() => {
+                onTransitionEnd();
+            }, timeout);
+        }
+
+        if (action) {
+            return action(element);
+        }
+
+        if (addClass) {
+            element.classList.add(addClass);
+        }
+
+        if (removeClass) {
+            element.classList.remove(removeClass);
+        }
+    });
+};
