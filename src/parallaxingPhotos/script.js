@@ -20,6 +20,7 @@ export function useParallaxingPhotos() {
                 watching.add(target);
                 if (watching.size > 0 && !isHandlingScroll) {
                     document.addEventListener('scroll', handleScroll);
+                    handleScroll();
                     isHandlingScroll = true;
                 }
                 const zoom = getShift(bottom, height);
