@@ -1,4 +1,4 @@
-import { blockScroll, unblockScroll } from '../common';
+import { blockScroll, unblockScroll, animate } from '../common';
 
 import './style.scss';
 
@@ -6,6 +6,7 @@ export function usePopups() {
     const popups = document.querySelectorAll('[data-popup-id]');
 
     popups.forEach((popup) => {
+        popup.classList.add('common-popup');
         const id = popup.dataset.popupId;
         const trigger = document.querySelector(`[data-popup-trigger="${id}"]`);
         if (!trigger) {
@@ -23,12 +24,21 @@ export function usePopups() {
     });
 
     function open(popup) {
-        popup.classList.remove('hidden');
+        animate(popup, { addClass: 'transparent', timeout: 5 })
+            .then(() => {
+                return animate(popup, { removeClass: 'hidden', timeout: 5 });
+            })
+            .then(() => {
+                animate(popup, { removeClass: 'transparent' });
+            });
         blockScroll();
     }
 
     function close(popup) {
-        popup.classList.add('hidden');
-        unblockScroll();
+        animate(popup, { addClass: 'transparent' })
+            .then(() => {
+                popup.classList.add('hidden');
+                unblockScroll();
+            });
     }
 }

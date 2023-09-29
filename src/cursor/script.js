@@ -6,9 +6,11 @@ export function useCursor() {
     if (getIsTouch()) {
         return;
     }
+    const documentStyles = getComputedStyle(document.documentElement);
+    const color = documentStyles.getPropertyValue('--page-color') || documentStyles.getPropertyValue('--red') || '#bb4b36';
     const SPEED_COEFF = 0.01;
-    const RADIUS = 6;
-    const HOVER_RADIUS = 14;
+    const RADIUS = 8;
+    const HOVER_RADIUS = 25;
     const pixelRatio = window.devicePixelRatio || 1;
     const canvas = document.createElement('canvas');
     canvas.classList.add('cursor-canvas');
@@ -53,9 +55,8 @@ export function useCursor() {
 
         resizeCircle(timeDiff);
 
-        ctx.fillStyle = "white";
-        ctx.strokeStyle = "white";
-        ctx.lineWidth = 3;
+        ctx.fillStyle = color;
+        ctx.globalAlpha = 0.4;
         
         ctx.clearRect(0, 0, size.width, size.height);
         ctx.beginPath();

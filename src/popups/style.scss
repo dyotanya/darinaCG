@@ -3,3 +3,15 @@
         transform: scale(1.4);
     }
 }
+
+.common-popup {
+    transition: opacity var(--transition-time);
+
+    &.transparent {
+        opacity: 0;
+    }
+
+    &.hidden {
+        display: none;
+    }
+}
