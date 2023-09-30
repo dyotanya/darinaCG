@@ -5,35 +5,38 @@ export function useParallaxingPhotos() {
     const SCALE = 1 + 2 * MAX_SHIFT / 100;
     const observer = new IntersectionObserver(handleIntersection);
     const images = document.querySelectorAll('[data-animation="parallax"], .portfolioimage');
+    const watching = new Set([]);
+    let isHandlingScroll = false;
+    
     images.forEach((image) => {
         image.style.setProperty('--zoom', SCALE);
         observer.observe(image);
     });
-
-    const watching = new Set([]);
-    let isHandlingScroll = false;
+    window.addEventListener('load', handleScroll);
 
     function handleIntersection(entries) {
         entries.forEach((entry) => {
             const { isIntersecting, target, boundingClientRect: { bottom, height } } = entry;
             if (isIntersecting) {
                 watching.add(target);
-                if (watching.size > 0 && !isHandlingScroll) {
-                    document.addEventListener('scroll', handleScroll);
-                    handleScroll();
-                    isHandlingScroll = true;
-                }
                 const zoom = getShift(bottom, height);
                 setImageShift(target, zoom);
             } else {
                 watching.delete(target);
-                if (watching.size === 0 && isHandlingScroll) {
-                    document.removeEventListener('scroll', handleScroll);
-                    isHandlingScroll = false;
-                }
                 setImageShift(target, bottom < 0 ? MAX_SHIFT : 0);
             }
         });
+        
+        if (watching.size > 0 && !isHandlingScroll) {
+            document.addEventListener('scroll', handleScroll);
+            isHandlingScroll = true;
+            return;
+        }
+        if (watching.size === 0 && isHandlingScroll) {
+            document.removeEventListener('scroll', handleScroll);
+            isHandlingScroll = false;
+            return;
+        }
     }
 
     function getShift(bottom, height) {
