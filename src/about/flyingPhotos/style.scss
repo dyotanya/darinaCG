@@ -1,0 +1,18 @@
+.flyingphotos {
+    pointer-events: none;
+}
+
+.flyingphotosgroup {
+    .flyingphoto {
+        --delay: 0s;
+        transition: opacity var(--transition-time), transform var(--transition-time) ease-out;
+        transition-delay: var(--delay);
+    }
+
+    &.shown {
+        .flyingphoto {
+            opacity: 1;
+            transform: translateY(0);;
+        }
+    }
+}
