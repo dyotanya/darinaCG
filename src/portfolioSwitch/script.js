@@ -17,11 +17,12 @@ export function usePortfolioSwitch(categories = DAR_CATEGORIES) {
     }, {});
 
     let activeCategory = categories[0];
+    let isSwitching = false;
 
     setInitialCategory();
 
     Object.entries(toggles).forEach(([category, toggle]) => {
-        toggle.addEventListener('click', () => changeCategory(category));
+        toggle.addEventListener('click', () => !isSwitching && changeCategory(category));
     });
 
     function changeCategory(category) {
@@ -30,12 +31,14 @@ export function usePortfolioSwitch(categories = DAR_CATEGORIES) {
     }
 
     function changeBlock(category) {
+        isSwitching = true;
         animate(blocks[activeCategory], { addClass: 'fading' })
             .then((block) => {
                 block.classList.add('hidden');
                 blocks[category].classList.remove('preparing');
                 block.classList.remove('fading');
                 activeCategory = category;
+                isSwitching = false;
             });
         blocks[category].classList.add('preparing');
         blocks[category].classList.remove('hidden');
