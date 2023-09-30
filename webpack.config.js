@@ -1,20 +1,17 @@
+const glob = require('glob');
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = (env) => ({
-  entry: {
-    index: './index.js',
-    preloader: './preloader.js',
-    page: './page.js',
-    ai: './ai.js',
-    darStudioRender: './darStudioRender.js',
-    about: './about.js',
-  },
+  entry: glob.sync('./entries/**.js').reduce(function(obj, entry){
+     obj[path.parse(entry).name] = entry;
+     return obj
+  },{}),
   mode: env.mode || 'development',
   watch: env.watch || false,
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js',
+    filename: '[name].js',
   },
   plugins: [new MiniCssExtractPlugin()],
   module: {
