@@ -1,9 +1,9 @@
-import { getIsTouch } from "../common";
+import { getIsTouch, prefersReducedMotion } from "../common";
 
 import './style.scss';
 
 export function useCursor() {
-    if (getIsTouch()) {
+    if (getIsTouch() || prefersReducedMotion) {
         return;
     }
     const documentStyles = getComputedStyle(document.documentElement);

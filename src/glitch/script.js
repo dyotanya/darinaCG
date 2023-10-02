@@ -1,4 +1,10 @@
+import { prefersReducedMotion } from '../common';
+
 export function useGlitch() {
+    if (prefersReducedMotion) {
+        return;
+    }
+
     const DELAY = 150;
     const ITERATIONS = 6;
 

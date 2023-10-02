@@ -1,6 +1,12 @@
+import { prefersReducedMotion } from '../common';
+
 import './style.scss';
 
 export function useParallaxingPhotos() {
+    if (prefersReducedMotion) {
+        return;
+    }
+
     const MAX_SHIFT = 15;
     const SCALE = 1 + 2 * MAX_SHIFT / 100;
     const observer = new IntersectionObserver(handleIntersection);

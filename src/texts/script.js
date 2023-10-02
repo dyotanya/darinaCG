@@ -48,7 +48,8 @@ export function useAppearByLine() {
         // The array we will fill with each line
         const lines = [];
         // The current line we are working on building
-        let currentLine = "";
+        let cumulativeText = '';
+        let currentLine = '';
         let currentHeight = 0;
 
         const lineHeight = getComputedStyle(element).lineHeight;
@@ -61,7 +62,9 @@ export function useAppearByLine() {
         for (var i = 0; i < allWords.length; i++) {
             // Build a new line and check if it is now too large for the container
             const newLine = currentLine + allWords[i] + " ";
-            copied.innerText = newLine;
+            cumulativeText += allWords[i] + " ";
+            console.log(cumulativeText)
+            copied.innerText = cumulativeText;
     
             if (currentHeight !== 0 && copied.clientHeight > currentHeight) {
                 // If the line is now larger, use the previous line (without the last added word) and reset the current line to just the last word
@@ -70,8 +73,8 @@ export function useAppearByLine() {
             } else {
                 // If it's not long enough yet, just keep adding words
                 currentLine = newLine;
-                currentHeight = copied.clientHeight;
             }
+            currentHeight = copied.clientHeight;
         }
         // Push any unfinshed final line to the array
         lines.push(currentLine.trim());

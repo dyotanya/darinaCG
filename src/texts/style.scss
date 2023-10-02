@@ -4,15 +4,21 @@
     }
 
     p {
+        text-indent: initial;
         margin: 0;
         height: var(--line-height, 1em);
         overflow: hidden;
+
+        &:first-child {
+            text-indent: inherit;
+        }
     }
 
     span {
+        text-indent: initial;
         display: inline-block;
         white-space: break-spaces;
-        padding-top: 1em;
+        padding-top: 1.05em;
     }
 
     @for $i from 1 through 10 {

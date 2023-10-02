@@ -1,6 +1,12 @@
+import { prefersReducedMotion } from "../../common";
+
 import './style.scss';
 
 export function useFlyingPhotos() {
+    if (prefersReducedMotion) {
+        return;
+    }
+
     const groups = document.querySelectorAll('.flyingphotosgroup');
 
     groups.forEach((group) => {
