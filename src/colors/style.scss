@@ -89,6 +89,8 @@ body {
 
 .fixedmenu {
     .fixedmenucontent {
+        background-color: transparent !important;
+
         &::before {
             content: '';
             display: block;
