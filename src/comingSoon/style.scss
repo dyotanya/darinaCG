@@ -1,0 +1,15 @@
+.cominsoonprogress {
+    transition: width 1.4s cubic-bezier(.65, 0, .45, 1);
+
+    &.shown {
+        width: 79%;
+    }
+
+    span {
+        transition: transform var(--transition-time, .4s) var(--besier-transition);
+
+        &.shown {
+            transform: translateY(0);
+        }
+    }
+}

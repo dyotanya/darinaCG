@@ -117,5 +117,9 @@ export function useScrollColors(glitchSection, setMenuSection) {
             setMenuSection(0);
         }
         currentSectionIndex = index;
+        setTimeout(() => {
+            const sectionColor = getComputedStyle(document.body).getPropertyValue('--color');
+            window.setCursorColor?.(sectionColor);
+        }, 50);
     }
 };

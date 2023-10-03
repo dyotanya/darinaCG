@@ -6,7 +6,7 @@
         transform: translateY(calc(-100% * var(--step) / var(--num-steps)));
 
         .textlink {
-            transition: opacity var(--transition-time);
+            transition: color var(--transition-time), opacity var(--transition-time);
         }
     }
 }

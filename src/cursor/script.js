@@ -7,7 +7,7 @@ export function useCursor() {
         return;
     }
     const documentStyles = getComputedStyle(document.documentElement);
-    const color = documentStyles.getPropertyValue('--page-color') || documentStyles.getPropertyValue('--red') || '#bb4b36';
+    let color = documentStyles.getPropertyValue('--page-color') || documentStyles.getPropertyValue('--red') || '#bb4b36';
     const SPEED_COEFF = 0.01;
     const RADIUS = 8;
     const HOVER_RADIUS = 25;
@@ -19,6 +19,8 @@ export function useCursor() {
 
     const interactiveElementSelectors = 'a, [data-animation="cursor-hover"], .portfolioimage';
     const elems = document.querySelectorAll(interactiveElementSelectors);
+
+    window.setCursorColor = (newColor) => color = newColor;
 
     const size = {
         width: window.innerWidth,

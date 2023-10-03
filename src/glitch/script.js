@@ -5,8 +5,8 @@ export function useGlitch() {
         return;
     }
 
-    const DELAY = 150;
-    const ITERATIONS = 6;
+    const DELAY = 100;
+    const ITERATIONS = 8;
 
     const letters = [...document.querySelectorAll('[data-animation="glitch"]')].reduce((acc, letter) => {
         const { section } = letter.dataset;

@@ -87,17 +87,31 @@ body {
     }
 }
 
-.fixedmenu,
-.mobilemenu {
+.fixedmenu {
     .fixedmenucontent {
-        transition: background-color var(--transition-time);
-        background-color: var(--bg);
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--red);
+            transform: translateX(0);
+            transition: transform .8s ease;
+        }
     }
+}
 
-    * {
-        transition: color var(--transition-time);
-        color: var(--menu-color);
+body[class*="section-"] {
+    .fixedmenucontent::before {
+        transform: translateX(-100%);
     }
+}
+
+.mobilemenu {
     .mobilemenubutton {
         transition: background-color var(--transition-time);
         background-color: var(--color);
@@ -110,6 +124,14 @@ body {
     .mobilemenuborder {
         transition: border-color var(--transition-time);
         border-color: var(--menu-color);
+    }
+}
+
+.fixedmenu,
+.mobilemenu {
+    * {
+        transition: color var(--transition-time);
+        color: var(--menu-color);
     }
     .sendmessagebtn {
         transition: border-color var(--transition-time);

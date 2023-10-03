@@ -63,7 +63,6 @@ export function useAppearByLine() {
             // Build a new line and check if it is now too large for the container
             const newLine = currentLine + allWords[i] + " ";
             cumulativeText += allWords[i] + " ";
-            console.log(cumulativeText)
             copied.innerText = cumulativeText;
     
             if (currentHeight !== 0 && copied.clientHeight > currentHeight) {
