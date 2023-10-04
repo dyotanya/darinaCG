@@ -8,6 +8,7 @@ html {
 
 .preloader {
     --white: #FBF5E7;
+    --transition-function: cubic-bezier(.7,0,.45,1);
     --transition: 1.5s cubic-bezier(.7,0,.45,1);
     position: fixed;
     width: 100vw;
@@ -77,8 +78,14 @@ html {
         text-indent: 50%;
         text-transform: uppercase;
         color: var(--white) !important;
+        overflow: hidden;
 
         transition: opacity var(--transition);
+
+        p {
+            margin: 0;
+            transition: transform 0.7s var(--transition-function);
+        }
     }
 
     &__indicator {
@@ -102,11 +109,24 @@ html {
 
         left: calc(var(--value) * 1%);
         transform: translateX(calc(var(--value) * -1%));
+        overflow: hidden;
 
         transition: left 0.1s linear, transform 0.1s linear, opacity var(--transition);
 
+        &-value {
+            display: inline-block;
+            transition: transform 0.7s var(--transition-function) .3s;
+        }
+
         &.shown {
             display: block;
+        }
+    }
+
+    &.loaded {
+        .preloader__text p,
+        .preloader__indicator .preloader__indicator-value {
+            transform: translateY(-100%);
         }
     }
 

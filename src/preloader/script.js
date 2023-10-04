@@ -6,6 +6,7 @@ export function usePreloader() {
     const STORAGE_KEY = 'preloaded';
     const preloader = document.querySelector('.preloader');
     const indicator = preloader.querySelector('.preloader__indicator');
+    const indicatorValue = indicator.querySelector('.preloader__indicator-value');
     let target = 0;
     let current = 0;
     let updateTimeout = null;
@@ -38,16 +39,15 @@ export function usePreloader() {
         if (isShortcut) {
             return preloader.remove();
         }
-        setTimeout(() => {
-            animate(preloader, { addClass: 'hidden' })
-                .then(() => {
-                    if (!isMainPage) {
-                        return removePreloader();
-                    }
-                    animate(preloader, { addClass: 'transparent' })
-                        .then(removePreloader);
-                });
-        }, 500);
+        animate(preloader, { addClass: 'loaded', timeout: 800 })
+            .then(() => animate(preloader, { addClass: 'hidden' }))
+            .then(() => {
+                if (!isMainPage) {
+                    return removePreloader();
+                }
+                animate(preloader, { addClass: 'transparent' })
+                    .then(removePreloader);
+            });
     }
 
     function setTarget(value) {
@@ -67,7 +67,7 @@ export function usePreloader() {
         current = value;
 
         indicator.style.setProperty('--value', current);
-        indicator.textContent = `${current}%`;
+        indicatorValue.textContent = `${current}%`;
 
         if (current === 100) {
             return hidePreloader();

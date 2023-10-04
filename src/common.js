@@ -58,17 +58,20 @@ export const animate = (element, options) => {
     const { addClass, removeClass, action, timeout } = options;
 
     return new Promise((res) => {
-        const onTransitionEnd = () => {
+        const onTransitionEnd = (event) => {
+            if (event && event.target !== element) {
+                return;
+            }
             element.removeEventListener('transitionend', onTransitionEnd);
             res(element);
         };
-
-        element.addEventListener('transitionend', onTransitionEnd);
 
         if (timeout) {
             setTimeout(() => {
                 onTransitionEnd();
             }, timeout);
+        } else {
+            element.addEventListener('transitionend', onTransitionEnd);
         }
 
         if (action) {
