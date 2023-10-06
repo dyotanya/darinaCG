@@ -14,6 +14,7 @@ import { useFlyingPhotos } from "../src/about/flyingPhotos/script";
 import { useAboutSlideshow } from "../src/about/slideshow/script";
 import { usePortfolioSwitch } from "../src/portfolioSwitch/script";
 import { usePortfolioZoom } from "../src/portfolioZoom/script";
+import { useSmoothScroll } from "../src/smoothScroll/script";
 import { swup } from "../src/pageTransitions/script";
 
 import "../src/styles/common.scss";
@@ -51,4 +52,5 @@ function init() {
   usePortfolioSwitch();
   usePortfolioZoom();
   useParallaxingPhotos();
+  useSmoothScroll();
 }
