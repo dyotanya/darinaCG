@@ -12,10 +12,13 @@ export function useCursor() {
     const RADIUS = 8;
     const HOVER_RADIUS = 25;
     const pixelRatio = window.devicePixelRatio || 1;
-    const canvas = document.createElement('canvas');
-    canvas.classList.add('cursor-canvas');
+    let canvas = document.querySelector('canvas.cursor-canvas');
+    if (!canvas) {
+        canvas = document.createElement('canvas');
+        canvas.classList.add('cursor-canvas');
+        document.body.appendChild(canvas);
+    }
     const ctx = canvas.getContext("2d");
-    document.body.appendChild(canvas);
 
     const interactiveElementSelectors = 'a, [data-animation="cursor-hover"], .portfolioimage';
     const elems = document.querySelectorAll(interactiveElementSelectors);

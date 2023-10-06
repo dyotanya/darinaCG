@@ -4,10 +4,13 @@ import './style.scss';
 export const AI_CATEGORIES = ['retails', 'exterior', 'interior', 'fashion', 'product'];
 export const DAR_CATEGORIES = ['interior', 'exterior', 'product', 'modeling'];
 
-export function usePortfolioSwitch(categories = DAR_CATEGORIES) {
+export function usePortfolioSwitch() {
+    const categories = [];
+
     const toggles = [...document.querySelectorAll('.portfolioswitchitem')].reduce((acc, toggle) => {
         const category = toggle.getAttribute('href').replace('#', '');
         acc[category] = toggle;
+        categories.push(category);
         return acc;
     }, {});
     const blocks = [...document.querySelectorAll('.portfoliocategory')].reduce((acc, block) => {

@@ -10,6 +10,9 @@ export function useAboutSlideshow() {
     let isIntersecting = false;
     let timeout;
     const image = document.querySelector('.aboutsecondblocktextsimage');
+    if (!image) {
+        return;
+    }
 
     const observer = new IntersectionObserver((entries) => {
         isIntersecting = entries[0].isIntersecting;

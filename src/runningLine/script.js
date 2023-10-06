@@ -2,6 +2,9 @@ import './style.scss';
 
 export function useRunningLine() {
     const container = document.querySelector('[data-style="runner-container"]');
+    if (!container) {
+        return;
+    }
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {

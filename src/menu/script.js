@@ -4,6 +4,10 @@ import './style.scss';
 
 export function useMenu() {
     const mobileMenu = document.querySelector('.mobilemenu');
+    if (!mobileMenu) {
+        return;
+    }
+
     const linksElements = {
         desktop: document.querySelector('.menulinks'),
         mobile: document.querySelector('.tabletmenulinks'),

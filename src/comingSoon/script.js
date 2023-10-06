@@ -6,6 +6,9 @@ const CATEGORIES = ['guides', 'tutorials', 'libraries', 'printed art', 'walpaper
 
 export function useComingSoon() {
     const progress = document.querySelector('.cominsoonprogress');
+    if (!progress) {
+        return;
+    }
     const progressText = document.querySelector('.cominsoonprogress span');
     const text = document.querySelector('.comingsooncategorytext');
     let timeout;

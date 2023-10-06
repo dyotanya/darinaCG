@@ -5,6 +5,9 @@ import './style.scss';
 export function usePreloader() {
     const STORAGE_KEY = 'preloaded';
     const preloader = document.querySelector('.preloader');
+    if (!preloader) {
+        return;
+    }
     const indicator = preloader.querySelector('.preloader__indicator');
     const indicatorValue = indicator.querySelector('.preloader__indicator-value');
     let target = 0;

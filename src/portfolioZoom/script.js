@@ -4,6 +4,9 @@ import './style.scss';
 
 export function usePortfolioZoom() {
     const popup = document.querySelector('.imagepopup');
+    if (!popup) {
+        return;
+    }
     const closeButton = popup.querySelector('.imagepopupclosebutton');
     const nextButton = popup.querySelector('.imagepopupbutton.next');
     const prevButton = popup.querySelector('.imagepopupbutton.prev');

@@ -27,10 +27,14 @@
     "path": "^0.12.7",
     "sass": "^1.62.0",
     "sass-loader": "^13.2.2",
-    "webpack-cli": "^5.0.1",
     "serverless": "^3.20.0",
     "serverless-finch": "^4.0.0",
-    "serverless-s3-cleaner": "^2.0.1"
+    "serverless-s3-cleaner": "^2.0.1",
+    "webpack-cli": "^5.0.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@swup/head-plugin": "^2.1.2",
+    "@swup/scripts-plugin": "^2.0.0",
+    "swup": "^4.4.2"
+  }
 }
