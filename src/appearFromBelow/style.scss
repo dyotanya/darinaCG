@@ -1,0 +1,15 @@
+[data-animation="appear-from-below"] {
+    transform: translateY(100%);
+    
+    @media (prefers-reduced-motion: reduce) {
+        transform: translateY(0);
+    }
+
+    &.transition {
+        transition: transform 0.8s ease;
+    }
+
+    &.shown {
+        transform: translateY(0);
+    }
+}

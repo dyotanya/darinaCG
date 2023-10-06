@@ -1,3 +1,19 @@
+:root {
+  --page-transition: 1s var(--besier-transition);
+}
+
+html.is-changing .transition-main {
+  transition: transform var(--page-transition);
+}
+
+html.is-animating.is-leaving .transition-main {
+  transform: translateY(calc(1 * 10vh * var(--overlay-direction, 1)));
+}
+
+html.is-animating.is-rendering .transition-main {
+  transform: translateY(calc(-1 * 10vh * var(--overlay-direction, 1)));
+}
+
 .transition-overlay {
   position: fixed;
   top: 0;
@@ -12,7 +28,7 @@
 }
 
 html.is-changing .transition-overlay {
-  transition: transform .8s ease-in-out, background-color 0.5s;
+  transition: transform var(--page-transition), background-color 0.5s;
   opacity: 1;
 }
 

@@ -7,6 +7,7 @@ import { useCursor } from "../src/cursor/script";
 import { useRunningLine } from "../src/runningLine/script";
 import { usePopups } from "../src/popups/script";
 import { useAppearByLine } from "../src/texts/script";
+import { useAppearFromBelow } from "../src/appearFromBelow/script";
 import { useComingSoon } from "../src/comingSoon/script";
 import { useContentBlock, setScrollBarWidthListener } from "../src/common";
 import { useTags } from "../src/about/tags/script";
@@ -43,6 +44,7 @@ function init() {
   useCursor();
   useRunningLine();
   useAppearByLine();
+  useAppearFromBelow();
   useComingSoon();
   useNavbar();
   useTags();
