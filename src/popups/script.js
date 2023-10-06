@@ -3,7 +3,6 @@ import { blockScroll, unblockScroll, animate } from '../common';
 import './style.scss';
 
 export function usePopups() {
-    console.log('usePopups');
     const popups = document.querySelectorAll('[data-popup-id]');
 
     popups.forEach((popup) => {

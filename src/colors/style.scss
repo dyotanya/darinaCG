@@ -133,11 +133,11 @@ body[class*="section-"] {
 .mobilemenu {
     * {
         transition: color var(--transition-time);
-        color: var(--menu-color);
+        color: var(--menu-color) !important;
     }
     .sendmessagebtn {
         transition: border-color var(--transition-time);
-        border-color: var(--menu-color);
+        border-color: var(--menu-color) !important;
     }
     .fixedmenudots {
         z-index: 1;

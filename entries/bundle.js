@@ -29,7 +29,7 @@ if (document.readyState === "complete") {
   document.addEventListener("DOMContentLoaded", () => init());
 }
 // Run after every additional navigation by swup
-swup.hooks.on("page:view", () => init());
+swup?.hooks.on("page:view", () => init());
 
 function init() {
   useContentBlock();
