@@ -74,7 +74,6 @@ html {
         min-width: max-content;
         font-size: 1em;
         line-height: 1.1em;
-        text-indent: 50%;
         text-transform: uppercase;
         overflow: hidden;
 
@@ -84,6 +83,22 @@ html {
             color: var(--white) !important;
             margin: 0;
             transition: transform 0.7s var(--transition-function);
+        }
+
+        &-indent {
+            text-indent: 50%;
+        }
+
+        span {
+            opacity: 0;
+        }
+
+        &.transition span {
+            transition: opacity 0s linear var(--delay, 0);
+        }
+
+        &.shown span {
+            opacity: 1;
         }
     }
 

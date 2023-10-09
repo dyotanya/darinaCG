@@ -25,6 +25,7 @@ export function usePreloader() {
             preloader.classList.add('main-page');
         }
         indicator.classList.add('shown');
+        animateLetters();
         blockScroll();
 
         window.addEventListener('load', () => setTarget(100));
@@ -82,6 +83,16 @@ export function usePreloader() {
         const diff = 50 * (1 - (target - current) / target);
         clearTimeout(updateTimeout);
         updateTimeout = setTimeout(() => setValue(current + 1), diff);
+    }
+
+    function animateLetters() {
+        const text = preloader.querySelector('.preloader__text');
+        const letters = text.querySelectorAll('span');
+        letters.forEach((letter, index) => {
+            const delay = 0.05 * index;
+            letter.style.setProperty('--delay', `${delay}s`);
+        });
+        setTimeout(() => text.classList.add('transition', 'shown'), 5);
     }
     
     function isPreloaded() {

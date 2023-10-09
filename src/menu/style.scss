@@ -9,6 +9,36 @@
             transition: color var(--transition-time), opacity var(--transition-time);
         }
     }
+
+    .sendmessagebtn {
+        position: relative;
+        overflow: hidden;
+    
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            z-index: -1;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--menu-color);
+            transition: top 0.5s ease;
+        }
+
+        &:hover {
+            p {
+                color: var(--bg) !important;
+            }
+            path {
+                fill: var(--bg) !important;
+            }
+            &::before {
+                top: 0%;
+            }
+        }
+    }
 }
 
 .mobilemenu {

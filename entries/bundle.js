@@ -34,6 +34,7 @@ if (document.readyState === "complete") {
 swup?.hooks.on("page:view", () => init());
 
 function init() {
+  window.setPreloader?.(60);
   useContentBlock();
   setScrollBarWidthListener();
   const setMenuSection = useMenu();
