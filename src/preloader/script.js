@@ -13,6 +13,10 @@ export function usePreloader() {
     let target = 0;
     let current = 0;
     let updateTimeout = null;
+    const checks = {
+        isPageLoaded: false,
+        isTextReady: false,
+    };
 
     const scriptBlock = preloader.closest('.preloaderscript');
     const isMainPage = scriptBlock?.dataset?.mainPage === 'true';
@@ -74,7 +78,7 @@ export function usePreloader() {
         indicatorValue.textContent = `${current}%`;
 
         if (current === 100) {
-            return hidePreloader();
+            return waitToHide({ isPageLoaded: true });
         }
         if (current === target) {
             updateTimeout = null
@@ -89,10 +93,28 @@ export function usePreloader() {
         const text = preloader.querySelector('.preloader__text');
         const letters = text.querySelectorAll('span');
         letters.forEach((letter, index) => {
-            const delay = 0.05 * index;
+            const delay = 0.04 * index;
             letter.style.setProperty('--delay', `${delay}s`);
         });
-        setTimeout(() => text.classList.add('transition', 'shown'), 5);
+        setTimeout(() => {
+            animate(letters[letters.length - 1], { action: () => text.classList.add('transition', 'shown') })
+                .then(() => {
+                    setTimeout(() => waitToHide({ isTextReady: true }), 500);
+                });
+        }, 5);
+    }
+
+    function waitToHide({ isTextReady = false, isPageLoaded = false }) {
+        if (isPageLoaded) {
+            checks.isPageLoaded = isPageLoaded;
+        }
+        if (isTextReady) {
+            checks.isTextReady = isTextReady;
+        }
+        console.log(checks.isPageLoaded, checks.isTextReady);
+        if (checks.isPageLoaded && checks.isTextReady) {
+            hidePreloader();
+        }
     }
     
     function isPreloaded() {
@@ -100,6 +122,6 @@ export function usePreloader() {
     }
     
     function setIsPreloaded() {
-        return sessionStorage.setItem(STORAGE_KEY, 'true');
+        // return sessionStorage.setItem(STORAGE_KEY, 'true');
     }
 };

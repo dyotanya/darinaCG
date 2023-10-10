@@ -27,15 +27,17 @@
             transition: top 0.5s ease;
         }
 
-        &:hover {
-            p {
-                color: var(--bg) !important;
-            }
-            path {
-                fill: var(--bg) !important;
-            }
-            &::before {
-                top: 0%;
+        @supports (hover: hover) {
+            &:hover {
+                p {
+                    color: var(--bg) !important;
+                }
+                path {
+                    fill: var(--bg) !important;
+                }
+                &::before {
+                    top: 0%;
+                }
             }
         }
     }

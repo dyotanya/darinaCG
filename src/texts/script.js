@@ -27,7 +27,7 @@ export function useAppearByLine() {
                 intersectionObserver.unobserve(target);
             }
         });
-    }, { rootMargin: '-20% 0% -20% 0%', threshold: 1 });
+    }, { rootMargin: '-20% 0% -20% 0%', threshold: 0 });
 
     elements.forEach(initDuplicate);
 

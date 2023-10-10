@@ -13,6 +13,9 @@ html {
     position: fixed;
     width: 100vw;
     height: 100vh;
+    @supports(height: 100svh) {
+        height: 100svh;
+    }
     box-sizing: border-box;
     background-color: var(--page-color, #bb4b36);
     font-family: 'Worksans Variablefont Wght', 'Work sans', sans-serif;
@@ -66,23 +69,25 @@ html {
         }
     }
 
-    &__text {
+    &__text-wrapper {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        overflow: hidden;
+    }
+
+    &__text {
         min-width: max-content;
         font-size: 1em;
         line-height: 1.1em;
         text-transform: uppercase;
-        overflow: hidden;
 
-        transition: opacity var(--transition);
+        transition: transform 0.7s var(--transition-function);
 
         p {
             color: var(--white) !important;
             margin: 0;
-            transition: transform 0.7s var(--transition-function);
         }
 
         &-indent {
@@ -149,7 +154,7 @@ html {
     }
 
     &.loaded {
-        .preloader__text p,
+        .preloader__text,
         .preloader__indicator .preloader__indicator-value {
             transform: translateY(-100%);
         }
