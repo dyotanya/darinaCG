@@ -87,3 +87,44 @@ export const animate = (element, options) => {
         }
     });
 };
+
+const pageLoadEventName = 'page-transition-end';
+export const pageLoadEvent = new Event(pageLoadEventName);
+
+export const onPageTransitionEnd = (callback) => {
+    const onEvent = (event) => {
+        callback(event);
+        window.removeEventListener(pageLoadEventName, onEvent);
+    };
+    window.addEventListener(pageLoadEventName, onEvent);
+};
+
+export const isPageTransitioning = () => document.documentElement.classList.contains('is-changing')
+    || document.documentElement.classList.contains('is-animating')
+    || document.documentElement.classList.contains('is-rendering');
+
+const pagePreloadEventName = 'page-preload-end';
+export const pagePreloadEvent = new Event(pagePreloadEventName);
+
+export const onPagePreloaderEnd = (callback) => {
+    const onEvent = (event) => {
+        callback(event);
+        window.removeEventListener(pagePreloadEventName, onEvent);
+    };
+    window.addEventListener(pagePreloadEventName, onEvent);
+};
+
+export const isPreloading = () => !!document.querySelector('.preloader');
+
+const pageReadyEventName = 'page-ready';
+export const pageReadyEvent = new Event(pageReadyEventName);
+
+export const onPageReady = (callback) => {
+    const onEvent = (event) => {
+        callback(event);
+        window.removeEventListener(pageReadyEventName, onEvent);
+    };
+    window.addEventListener(pageReadyEventName, onEvent);
+};
+
+export const isPageReady = () => !isPreloading && !isPageTransitioning();

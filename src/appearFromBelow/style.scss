@@ -6,7 +6,7 @@
     }
 
     &.transition {
-        transition: transform 0.8s ease;
+        transition: transform 0.8s ease var(--delay, 0s);
     }
 
     &.shown {

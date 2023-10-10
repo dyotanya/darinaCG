@@ -34,7 +34,9 @@ if (document.readyState === "complete") {
 swup?.hooks.on("page:view", () => init());
 
 function init() {
-  unblockScroll();
+  if (!document.querySelector('.preloader')) {
+    unblockScroll();
+  }
   window.setPreloader?.(60);
   useContentBlock();
   setScrollBarWidthListener();

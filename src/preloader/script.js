@@ -1,4 +1,4 @@
-import { blockScroll, unblockScroll, animate } from '../common';
+import { blockScroll, unblockScroll, animate, pagePreloadEvent, pageReadyEvent } from '../common';
 
 import './style.scss';
 
@@ -28,23 +28,32 @@ export function usePreloader() {
         if (isMainPage) {
             preloader.classList.add('main-page');
         }
+        const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+        document.documentElement.style.setProperty('--scroll-bar-width', `${scrollBarWidth}px`);
         indicator.classList.add('shown');
         animateLetters();
-        blockScroll();
+        setTimeout(blockScroll, 50);
 
         window.addEventListener('load', () => setTarget(100));
         window.setPreloader = setTarget;
+    }
+
+    function dispatchEvents() {
+        window.dispatchEvent(pagePreloadEvent);
+        window.dispatchEvent(pageReadyEvent);
     }
 
     function removePreloader() {
         unblockScroll();
         preloader.remove();
         setIsPreloaded();
+        dispatchEvents();
         return Promise.resolve();
     }
 
     function hidePreloader(isShortcut = false) {
         if (isShortcut) {
+            setTimeout(dispatchEvents, 250);
             return preloader.remove();
         }
         animate(preloader, { addClass: 'loaded', timeout: 800 })
@@ -111,7 +120,6 @@ export function usePreloader() {
         if (isTextReady) {
             checks.isTextReady = isTextReady;
         }
-        console.log(checks.isPageLoaded, checks.isTextReady);
         if (checks.isPageLoaded && checks.isTextReady) {
             hidePreloader();
         }
