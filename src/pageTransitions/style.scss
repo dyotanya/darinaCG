@@ -27,6 +27,12 @@ html.is-animating.is-rendering .transition-main {
   pointer-events: none;
 }
 
+.popup-opened {
+  .transition-overlay {
+    background-color: var(--white, #bb4b36);
+  }
+}
+
 html.is-changing .transition-overlay {
   transition: transform var(--page-transition), background-color 0.5s;
   opacity: 1;

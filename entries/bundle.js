@@ -9,7 +9,7 @@ import { usePopups } from "../src/popups/script";
 import { useAppearByLine } from "../src/texts/script";
 import { useAppearFromBelow } from "../src/appearFromBelow/script";
 import { useComingSoon } from "../src/comingSoon/script";
-import { useContentBlock, setScrollBarWidthListener } from "../src/common";
+import { useContentBlock, setScrollBarWidthListener, unblockScroll } from "../src/common";
 import { useTags } from "../src/about/tags/script";
 import { useFlyingPhotos } from "../src/about/flyingPhotos/script";
 import { useAboutSlideshow } from "../src/about/slideshow/script";
@@ -34,6 +34,7 @@ if (document.readyState === "complete") {
 swup?.hooks.on("page:view", () => init());
 
 function init() {
+  unblockScroll();
   window.setPreloader?.(60);
   useContentBlock();
   setScrollBarWidthListener();

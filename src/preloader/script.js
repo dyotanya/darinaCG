@@ -122,6 +122,6 @@ export function usePreloader() {
     }
     
     function setIsPreloaded() {
-        // return sessionStorage.setItem(STORAGE_KEY, 'true');
+        return sessionStorage.setItem(STORAGE_KEY, 'true');
     }
 };

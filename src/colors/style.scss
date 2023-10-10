@@ -111,6 +111,15 @@ body[class*="section-"] {
     .fixedmenucontent::before {
         transform: translateX(-100%);
     }
+
+    .burgermenu {
+        background-color: var(--color) !important;
+    
+        .burgermenubutton {
+            color: var(--color);
+            border-color: var(--color);
+        }
+    }
 }
 
 .mobilemenu {
@@ -156,13 +165,4 @@ body[class*="section-"] {
 
 .mobilemenu {
     border-color: var(--menu-color);
-}
-
-.burgermenu {
-    background-color: var(--color) !important;
-
-    .burgermenubutton {
-        color: var(--color);
-        border-color: var(--color);
-    }
 }
