@@ -40,4 +40,9 @@
             color: var(--hover-color);
         }
     }
+
+    &.inactive {
+        pointer-events: none;
+        opacity: 0.6;
+    }
 }
