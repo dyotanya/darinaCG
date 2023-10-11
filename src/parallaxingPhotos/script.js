@@ -9,7 +9,7 @@ export function useParallaxingPhotos() {
 
     const MAX_SHIFT = 15;
     const SCALE = 1 + 2 * MAX_SHIFT / 100;
-    const observer = new IntersectionObserver(handleIntersection, { rootMargin: '0% 0% 15% 0%' });
+    const observer = new IntersectionObserver(handleIntersection);
     const resizeObserver = new ResizeObserver(handleResize);
     const images = document.querySelectorAll('[data-animation="parallax"], .portfolioimage');
     const watching = new Set([]);
@@ -44,7 +44,7 @@ export function useParallaxingPhotos() {
                 resizeObserver.observe(target);
             } else {
                 watching.delete(target);
-                setImageShift(target, bottom < 0 ? MAX_SHIFT : 0);
+                setImageShift(target, bottom < 0 ? 0 : MAX_SHIFT);
                 resizeObserver.unobserve(target);
             }
         });
