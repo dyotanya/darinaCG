@@ -53,7 +53,7 @@ export function usePreloader() {
 
     function hidePreloader(isShortcut = false) {
         if (isShortcut) {
-            setTimeout(dispatchEvents, 250);
+            setTimeout(dispatchEvents, 500);
             return preloader.remove();
         }
         animate(preloader, { addClass: 'loaded', timeout: 800 })

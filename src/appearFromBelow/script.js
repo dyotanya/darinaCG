@@ -1,4 +1,4 @@
-import { prefersReducedMotion } from '../common';
+import { prefersReducedMotion, isPageReady } from '../common';
 
 import './style.scss';
 
@@ -11,6 +11,11 @@ export function useAppearFromBelow() {
 
     if (!elements?.length) {
         return;
+    }
+
+    if (isPageReady()) {
+        console.log('ready')
+        return show(elements);
     }
 
     const intersectionObserver = new IntersectionObserver((entries) => {

@@ -156,7 +156,7 @@
         
         .fixedmenu,
         .mobilemenu {
-            * {
+            a, p, h1 {
                 transition: color var(--transition-time);
                 color: var(--menu-color) !important;
             }

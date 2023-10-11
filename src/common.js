@@ -127,4 +127,4 @@ export const onPageReady = (callback) => {
     window.addEventListener(pageReadyEventName, onEvent);
 };
 
-export const isPageReady = () => !isPreloading && !isPageTransitioning();
+export const isPageReady = () => !isPreloading() && !isPageTransitioning();
