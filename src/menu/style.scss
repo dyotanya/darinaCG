@@ -2,11 +2,11 @@
     .menulinks {
         --step: 0;
         --num-steps: 6;
-        transition: transform var(--transition-time) ease-in-out;
+        transition: transform var(--transition-time) ease-in-out !important;
         transform: translateY(calc(-100% * var(--step) / var(--num-steps)));
 
         .textlink {
-            transition: color var(--transition-time), opacity var(--transition-time);
+            transition: color var(--transition-time), opacity var(--transition-time) !important;
         }
     }
 
