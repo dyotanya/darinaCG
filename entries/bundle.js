@@ -21,6 +21,7 @@ import { swup } from "../src/pageTransitions/script";
 import "../src/styles/common.scss";
 import "../src/styles/page.scss";
 import "../src/styles/home.scss";
+import "../src/styles/burger.scss";
 import "../src/darStudioRender/style.scss";
 import "../src/portfolioDoubleImages/style.scss";
 

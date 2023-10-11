@@ -16,25 +16,6 @@ $pages: home, ai-concepts, dar-studio-render, about, educational, shop, contact;
     --active-link-opacity: 1;
 }
 
-.burgermenu {
-    --active-link-opacity: 0.6;
-
-    .burgermenulinks {
-        position: relative;
-
-        &::after {
-            display: block;
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: repeating-linear-gradient(to bottom, var(--white), var(--white) 1px, transparent 1px, transparent 6px);
-        }
-    }
-}
-
 @each $page in $pages {
     [active-link="#{$page}"] {
         [data-link="#{$page}"] {

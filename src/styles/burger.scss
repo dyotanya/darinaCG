@@ -1,0 +1,49 @@
+[data-popup-id="burger"] {
+    --active-link-opacity: 0.6;
+
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transition: clip-path var(--transition-time) var(--besier-transition);
+
+    .burgermenulinks {
+        position: relative;
+
+        &::after {
+            display: block;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: repeating-linear-gradient(to right, var(--white), var(--white) 1px, transparent 1px, transparent 6px);
+            transition: width var(--transition-time) ease calc(var(--transition-time) * 0.5);
+        }
+
+        li {
+            overflow: hidden;
+    
+            a {
+                transform: translateY(0);
+                transition: transform var(--transition-time) ease calc(var(--transition-time) * 2 / 3);
+            }
+        }
+    }
+
+    &.transparent {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+
+        .burgermenulinks {
+            &::after {
+                width: 100%;
+            }
+
+            li a {
+                transform: translateY(100%);
+            }
+        }
+    }
+
+    &.hidden {
+        display: none;
+    }
+}
