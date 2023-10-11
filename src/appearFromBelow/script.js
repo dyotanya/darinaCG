@@ -14,7 +14,6 @@ export function useAppearFromBelow() {
     }
 
     if (isPageReady()) {
-        console.log('ready')
         return show(elements);
     }
 

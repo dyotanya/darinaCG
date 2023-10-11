@@ -10,6 +10,7 @@ export function useParallaxingPhotos() {
     const MAX_SHIFT = 15;
     const SCALE = 1 + 2 * MAX_SHIFT / 100;
     const observer = new IntersectionObserver(handleIntersection);
+    const resizeObserver = new ResizeObserver(handleResize);
     const images = document.querySelectorAll('[data-animation="parallax"], .portfolioimage');
     const watching = new Set([]);
     let isHandlingScroll = false;
@@ -20,6 +21,19 @@ export function useParallaxingPhotos() {
     });
     window.addEventListener('load', handleScroll);
 
+    function handleResize(entries) {
+        entries.forEach((entry) => {
+            const { target } = entry;
+            !!target.debounce && clearTimeout(target.debounce);
+
+            target.debounce = setTimeout(() => {
+                const { bottom, height } = target.getBoundingClientRect();
+                const zoom = getShift(bottom, height);
+                setImageShift(target, zoom);
+            }, 200);
+        });
+    }
+
     function handleIntersection(entries) {
         entries.forEach((entry) => {
             const { isIntersecting, target, boundingClientRect: { bottom, height } } = entry;
@@ -27,9 +41,11 @@ export function useParallaxingPhotos() {
                 watching.add(target);
                 const zoom = getShift(bottom, height);
                 setImageShift(target, zoom);
+                resizeObserver.observe(target);
             } else {
                 watching.delete(target);
                 setImageShift(target, bottom < 0 ? MAX_SHIFT : 0);
+                resizeObserver.unobserve(target);
             }
         });
         

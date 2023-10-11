@@ -19,6 +19,10 @@
     .navsendmessagebtn {
         position: relative;
         overflow: hidden;
+
+        p {
+            transition: color var(--transition-time);
+        }
     
         &::before {
             content: '';

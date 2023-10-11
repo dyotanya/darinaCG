@@ -80,7 +80,7 @@
     &[data-page="main"] {
         .content {
             *:not(.abouttag) {
-                color: var(--color) !important;
+                color: var(--color);
                 border-color: var(--color) !important;
             }
             path {
@@ -99,7 +99,7 @@
                     border-color: var(--color50) !important;
         
                     &::placeholder {
-                        color: var(--color50) !important;
+                        color: var(--color50);
                     }
                 }
                 .comingsoonformbutton {
@@ -145,7 +145,7 @@
                 border-color: transparent !important;
         
                 p {
-                    color: var(--white) !important;
+                    color: var(--white);
                 }
             }
             .mobilemenuborder {
@@ -158,11 +158,11 @@
         .mobilemenu {
             a, p, h1 {
                 transition: color var(--transition-time);
-                color: var(--menu-color) !important;
+                color: var(--menu-color);
             }
             .sendmessagebtn {
                 transition: border-color var(--transition-time);
-                border-color: var(--menu-color) !important;
+                border-color: var(--menu-color);
             }
             .fixedmenudots {
                 z-index: 1;

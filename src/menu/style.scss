@@ -60,7 +60,7 @@
     }
 
     .mobilemenulanguages {
-        opacity: 1;
+        opacity: 0; // TODO: set to 1 when languages are added back
         transition: opacity var(--transition-time);
     }
 

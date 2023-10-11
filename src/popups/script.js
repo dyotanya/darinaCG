@@ -4,6 +4,7 @@ import './style.scss';
 
 export function usePopups() {
     const popups = document.querySelectorAll('[data-popup-id]');
+    let isChanging = false;
 
     popups.forEach((popup) => {
         popup.classList.add('common-popup');
@@ -24,21 +25,33 @@ export function usePopups() {
     });
 
     function open(popup) {
+        if (isChanging) {
+            return;
+        }
+
+        isChanging = true;
         animate(popup, { addClass: 'transparent', timeout: 5 })
             .then(() => {
                 return animate(popup, { removeClass: 'hidden', timeout: 5 });
             })
             .then(() => {
-                animate(popup, { removeClass: 'transparent' });
-            });
+                return animate(popup, { removeClass: 'transparent' });
+            })
+            .then(() => isChanging = false);
         blockScroll();
     }
 
     function close(popup) {
+        if (isChanging) {
+            return;
+        }
+
+        isChanging = true;
         animate(popup, { addClass: 'transparent' })
             .then(() => {
                 popup.classList.add('hidden');
                 unblockScroll();
+                isChanging = false;
             });
     }
 }
