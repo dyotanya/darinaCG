@@ -9,7 +9,7 @@ export function useParallaxingPhotos() {
 
     const MAX_SHIFT = 15;
     const SCALE = 1 + 2 * MAX_SHIFT / 100;
-    const observer = new IntersectionObserver(handleIntersection);
+    const observer = new IntersectionObserver(handleIntersection, { rootMargin: '0% 0% 15% 0%' });
     const resizeObserver = new ResizeObserver(handleResize);
     const images = document.querySelectorAll('[data-animation="parallax"], .portfolioimage');
     const watching = new Set([]);
