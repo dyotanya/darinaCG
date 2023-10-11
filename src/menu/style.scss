@@ -27,7 +27,7 @@
             transition: top 0.5s ease;
         }
 
-        @supports (hover: hover) {
+        @media (hover: hover) {
             &:hover {
                 p {
                     color: var(--bg) !important;

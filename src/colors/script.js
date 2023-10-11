@@ -8,6 +8,7 @@ import './style.scss';
 */
 
 export function useScrollColors(glitchSection, setMenuSection) {
+    const wrapper = document.querySelector('.wrapper');
     const sectionBreaks = [...document.querySelectorAll('[data-animation="sections"]')]
         .filter((sectionBreak) => sectionBreak.dataset.section !== 'educational');  // TODO: remove with the "coming soon"
     const INITIAL_CHECK_MARGIN = 25;
@@ -107,10 +108,10 @@ export function useScrollColors(glitchSection, setMenuSection) {
         const section = sections[index];
         const currentSection = sections[currentSectionIndex];
         if (currentSection) {
-            document.body.classList.remove(`${SECTION_PREFIX}${currentSection}`);
+            wrapper.classList.remove(`${SECTION_PREFIX}${currentSection}`);
         }
         if (index > -1) {
-            document.body.classList.add(`${SECTION_PREFIX}${section}`);
+            wrapper.classList.add(`${SECTION_PREFIX}${section}`);
             setMenuSection(index);
             glitchSection?.(section);
         } else {
@@ -118,7 +119,7 @@ export function useScrollColors(glitchSection, setMenuSection) {
         }
         currentSectionIndex = index;
         setTimeout(() => {
-            const sectionColor = getComputedStyle(document.body).getPropertyValue('--color');
+            const sectionColor = getComputedStyle(wrapper).getPropertyValue('--color');
             window.setCursorColor?.(sectionColor);
         }, 50);
     }

@@ -1,7 +1,3 @@
-:root {
-    --bg: var(--page-color);
-}
-
 .pageheading {
     span {
         display: inline-block;
@@ -12,21 +8,6 @@
             font-size: 1.125em;
             margin-right: 0.025em;
         }
-    }
-}
-
-*, a {
-    &:not([data-style*="preserve-color"]) {
-        color: var(--page-color);
-    }
-    &:not([data-style*="preserve-border-color"]) {
-        border-color: var(--page-color) !important;
-    }
-    [data-style*="preserve-color"] * {
-        color: inherit;
-    }
-    &[data-style*="set-background-color"] {
-        background-color: var(--page-color);
     }
 }
 

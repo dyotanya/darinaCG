@@ -1,4 +1,4 @@
-body {
+.wrapper {
     --bg: var(--red);
     --color: var(--red);
     --color20: var(--red20);
@@ -51,65 +51,21 @@ body {
         --color20: var(--red20);
         --color50: var(--red50);
     }
-}
-
-.content {
-    *:not(.abouttag) {
-        color: var(--color) !important;
-        border-color: var(--color) !important;
+    &[data-page="ai"],
+    &[data-page="contact"] {
+        --color: var(--red);
+        --color20: var(--red20);
+        --color50: var(--red50);
     }
-    path {
-        fill: var(--color);
+    &[data-page="3d"] {
+        --color: var(--green);
+        --color20: var(--green20);
+        --color50: var(--green50);
     }
-    .keyboardletter {
-        border-color: var(--color20) !important;
-
-        &.glitch {
-            background-color: var(--color20) !important;
-        }
-    }
-    // TODO: remove with the "coming soon"
-    .comingsoonform {
-        input[type="text"] {
-            border-color: var(--color50) !important;
-
-            &::placeholder {
-                color: var(--color50) !important;
-            }
-        }
-        .comingsoonformbutton {
-            transition: background-color var(--transition-time);
-            background-color: var(--color);
-        }
-    }
-    .cominsoonprogress  {
-        background-color: var(--color);
-    }
-}
-
-.fixedmenu {
-    .fixedmenucontent {
-        background-color: transparent !important;
-
-        &::before {
-            content: '';
-            display: block;
-            position: absolute;
-            z-index: -1;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--red);
-            transform: translateX(0);
-            transition: transform .8s ease;
-        }
-    }
-}
-
-body[class*="section-"] {
-    .fixedmenucontent::before {
-        transform: translateX(-100%);
+    &[data-page="about"] {
+        --color: var(--black);
+        --color20: var(--black20);
+        --color50: var(--black50);
     }
 
     .burgermenu {
@@ -120,49 +76,136 @@ body[class*="section-"] {
             border-color: var(--color);
         }
     }
-}
 
-.mobilemenu {
-    .mobilemenubutton {
-        transition: background-color var(--transition-time);
-        background-color: var(--color);
-        border-color: transparent !important;
-
-        p {
-            color: var(--white) !important;
+    &[data-page="main"] {
+        .content {
+            *:not(.abouttag) {
+                color: var(--color) !important;
+                border-color: var(--color) !important;
+            }
+            path {
+                fill: var(--color);
+            }
+            .keyboardletter {
+                border-color: var(--color20) !important;
+        
+                &.glitch {
+                    background-color: var(--color20) !important;
+                }
+            }
+            // TODO: remove with the "coming soon"
+            .comingsoonform {
+                input[type="text"] {
+                    border-color: var(--color50) !important;
+        
+                    &::placeholder {
+                        color: var(--color50) !important;
+                    }
+                }
+                .comingsoonformbutton {
+                    transition: background-color var(--transition-time);
+                    background-color: var(--color);
+                }
+            }
+            .cominsoonprogress  {
+                background-color: var(--color);
+            }
+        }
+        
+        .fixedmenu {
+            .fixedmenucontent {
+                background-color: transparent !important;
+        
+                &::before {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    z-index: -1;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: var(--red);
+                    transform: translateX(0);
+                    transition: transform .8s ease;
+                }
+            }
+        }
+    
+        &[class*="section-"] {
+            .fixedmenucontent::before {
+                transform: translateX(-100%);
+            }
+        }
+        
+        .mobilemenu {
+            .mobilemenubutton {
+                transition: background-color var(--transition-time);
+                background-color: var(--color);
+                border-color: transparent !important;
+        
+                p {
+                    color: var(--white) !important;
+                }
+            }
+            .mobilemenuborder {
+                transition: border-color var(--transition-time);
+                border-color: var(--menu-color);
+            }
+        }
+        
+        .fixedmenu,
+        .mobilemenu {
+            * {
+                transition: color var(--transition-time);
+                color: var(--menu-color) !important;
+            }
+            .sendmessagebtn {
+                transition: border-color var(--transition-time);
+                border-color: var(--menu-color) !important;
+            }
+            .fixedmenudots {
+                z-index: 1;
+                pointer-events: none;
+        
+                .fixedmenudot {
+                    transition: background-color var(--transition-time);
+                    background-color: var(--menu-color);
+                }
+            }
+            .entericon path {
+                transition: fill var(--transition-time);
+                fill: var(--menu-color);
+            }
+        }
+        
+        .mobilemenu {
+            border-color: var(--menu-color);
         }
     }
-    .mobilemenuborder {
-        transition: border-color var(--transition-time);
-        border-color: var(--menu-color);
-    }
-}
 
-.fixedmenu,
-.mobilemenu {
-    * {
-        transition: color var(--transition-time);
-        color: var(--menu-color) !important;
-    }
-    .sendmessagebtn {
-        transition: border-color var(--transition-time);
-        border-color: var(--menu-color) !important;
-    }
-    .fixedmenudots {
-        z-index: 1;
-        pointer-events: none;
-
-        .fixedmenudot {
-            transition: background-color var(--transition-time);
-            background-color: var(--menu-color);
+    &[data-page="ai"],
+    &[data-page="contact"],
+    &[data-page="3d"],
+    &[data-page="about"] {
+        *, a {
+            &:not([data-style*="preserve-color"]) {
+                color: var(--color);
+            }
+            &:not([data-style*="preserve-border-color"]) {
+                border-color: var(--color) !important;
+            }
+            [data-style*="preserve-color"] * {
+                color: inherit;
+            }
+            &[data-style*="set-background-color"] {
+                background-color: var(--color);
+            }
         }
     }
-    .entericon path {
-        transition: fill var(--transition-time);
-        fill: var(--menu-color);
-    }
+
 }
 
-.mobilemenu {
-    border-color: var(--menu-color);
-}
+
+
+

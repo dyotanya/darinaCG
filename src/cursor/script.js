@@ -6,8 +6,8 @@ export function useCursor() {
     if (getIsTouch() || prefersReducedMotion) {
         return;
     }
-    const documentStyles = getComputedStyle(document.documentElement);
-    let color = documentStyles.getPropertyValue('--page-color') || documentStyles.getPropertyValue('--red') || '#bb4b36';
+    const wrapperStyles = getComputedStyle(document.querySelector('.wrapper'));
+    let color = wrapperStyles.getPropertyValue('--color') || wrapperStyles.getPropertyValue('--red') || '#bb4b36';
     const SPEED_COEFF = 0.01;
     const RADIUS = 8;
     const HOVER_RADIUS = 25;

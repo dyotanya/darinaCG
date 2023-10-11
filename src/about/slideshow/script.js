@@ -1,4 +1,5 @@
 export function useAboutSlideshow() {
+    const DELAY = 900;
     const urls = [
         'https://uploads-ssl.webflow.com/64ad0ab68d0150d89b44a63e/6512ec79ced75c2abc9efbe9_SLIDE%201.png',
         'https://uploads-ssl.webflow.com/64ad0ab68d0150d89b44a63e/6512ed5a7d51ba682807f694_SLIDE%202.png',
@@ -56,7 +57,7 @@ export function useAboutSlideshow() {
             const nextIndex = current >= images.length - 1 ? 0 : current + 1;
             image.setAttribute('src', images[nextIndex]);
             current = nextIndex;
-            timeout = setTimeout(setNext, 1200);
+            timeout = setTimeout(setNext, DELAY);
         });
     }
 }
