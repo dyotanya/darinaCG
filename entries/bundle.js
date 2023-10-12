@@ -16,6 +16,7 @@ import { useAboutSlideshow } from "../src/about/slideshow/script";
 import { usePortfolioSwitch } from "../src/portfolioSwitch/script";
 import { usePortfolioZoom } from "../src/portfolioZoom/script";
 import { useSmoothScroll } from "../src/smoothScroll/script";
+import { useImageLoad } from "../src/imageLoad/script";
 import { swup } from "../src/pageTransitions/script";
 
 import "../src/styles/common.scss";
@@ -45,6 +46,7 @@ function init() {
   const glitchSection = useGlitch();
   useScrollColors(glitchSection, setMenuSection);
   usePopups();
+  useImageLoad();
   useParallaxingPhotos();
   useCursor();
   useRunningLine();

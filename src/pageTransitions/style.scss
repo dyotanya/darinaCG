@@ -21,25 +21,46 @@ html.is-animating.is-rendering .transition-main {
   right: 0;
   bottom: 0;
   z-index: 999;
+  display: grid;
+  place-items: center;
   background-color: var(--page-color, #bb4b36);
   opacity: 0;
   transform: translate3d(0, calc(-1 * 100% * var(--overlay-direction, 1)), 0);
   pointer-events: none;
+
+  p {
+    opacity: 0;
+    color: var(--white);
+    font-family: 'Syne Variablefont Wght';
+    font-size: 1em;
+  }
 }
 
 .popup-opened {
   .transition-overlay {
     background-color: var(--white, #bb4b36);
+
+    p {
+      color: var(--color);
+    }
   }
 }
 
 html.is-changing .transition-overlay {
   transition: transform var(--page-transition), background-color 0.5s;
   opacity: 1;
+
+  p {
+    transition: opacity 0.2s linear 1.2s;
+  }
 }
 
 html.is-animating .transition-overlay {
   transform: translate3d(0, 0, 0);
+
+  p {
+    opacity: 1;
+  }
 }
 
 html.is-rendering .transition-overlay {
