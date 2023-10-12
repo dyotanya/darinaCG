@@ -5,13 +5,14 @@
 .flyingphotosgroup {
     .flyingphoto {
         --delay: 0s;
+        opacity: 0 !important;
         transition: opacity var(--transition-time), transform var(--transition-time) ease-out;
         transition-delay: var(--delay);
     }
 
     &.shown {
         .flyingphoto {
-            opacity: 1;
+            opacity: 1 !important;
             transform: translateY(0);;
         }
     }
