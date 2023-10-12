@@ -20,7 +20,7 @@ html.is-animating.is-rendering .transition-main {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 999;
+  z-index: 99999;
   display: grid;
   place-items: center;
   background-color: var(--page-color, #bb4b36);
