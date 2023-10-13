@@ -8,9 +8,10 @@ export function useCursor() {
     }
     const wrapperStyles = getComputedStyle(document.querySelector('.wrapper'));
     let color = wrapperStyles.getPropertyValue('--color') || wrapperStyles.getPropertyValue('--red') || '#bb4b36';
+    const OPACITY = 0.4;
     const SPEED_COEFF = 0.01;
-    const RADIUS = 8;
-    const HOVER_RADIUS = 25;
+    const RADIUS = 12;
+    const HOVER_RADIUS = 30;
     const pixelRatio = window.devicePixelRatio || 1;
     let canvas = document.querySelector('canvas.cursor-canvas');
     if (!canvas) {
@@ -61,7 +62,7 @@ export function useCursor() {
         resizeCircle(timeDiff);
 
         ctx.fillStyle = color;
-        ctx.globalAlpha = 0.4;
+        ctx.globalAlpha = OPACITY;
         
         ctx.clearRect(0, 0, size.width, size.height);
         ctx.beginPath();
