@@ -5,7 +5,9 @@
 }
 
 .common-popup {
-    transition: opacity var(--transition-time);
+    &:not(.hidden) {
+        transition: opacity var(--transition-time);
+    }
 
     &.transparent {
         opacity: 0;

@@ -5,7 +5,10 @@
         opacity: 1 !important;
     
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-        transition: clip-path var(--transition-time) var(--besier-transition);
+        
+        &:not(.hidden) {
+            transition: clip-path var(--transition-time) var(--besier-transition);
+        }
     
         .burgermenulinks {
             --transition-delay: calc(var(--transition-time) * 0.5);
