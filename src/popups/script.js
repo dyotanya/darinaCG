@@ -7,7 +7,7 @@ export function usePopups() {
     let isChanging = false;
 
     popups.forEach((popup) => {
-        popup.classList.add('common-popup');
+        popup.classList.add('common-popup', 'transparent');
         const id = popup.dataset.popupId;
         const trigger = document.querySelector(`[data-popup-trigger="${id}"]`);
         if (!trigger) {
@@ -30,10 +30,7 @@ export function usePopups() {
         }
 
         isChanging = true;
-        animate(popup, { addClass: 'transparent', timeout: 5 })
-            .then(() => {
-                return animate(popup, { removeClass: 'hidden', timeout: 5 });
-            })
+        animate(popup, { removeClass: 'hidden', timeout: 10 })
             .then(() => {
                 return animate(popup, { removeClass: 'transparent' });
             })

@@ -68,7 +68,7 @@ export const animate = (element, options) => {
 
         if (timeout) {
             setTimeout(() => {
-                onTransitionEnd();
+                res(element);
             }, timeout);
         } else {
             element.addEventListener('transitionend', onTransitionEnd);
