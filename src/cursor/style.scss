@@ -6,7 +6,7 @@
     height: 100vh;
     z-index: 9999;
     pointer-events: none;
-    mix-blend-mode: multiply;
+    mix-blend-mode: difference;
 
     @media not (hover: hover) {
         display: none;
