@@ -3,11 +3,11 @@ import SmoothScroll from "smoothscroll-for-websites";
 export function useSmoothScroll() {
     SmoothScroll({
         // Scrolling Core
-        animationTime    : 2000, // [ms]
-        stepSize         : 150, // [px]
+        animationTime    : 1400, // [ms]
+        stepSize         : 100, // [px]
     
         // Acceleration
-        accelerationDelta : 30,  // 50
+        accelerationDelta : 20,  // 50
         accelerationMax   : 3,   // 3
     
         // Keyboard Settings

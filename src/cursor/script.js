@@ -61,10 +61,8 @@ export function useCursor() {
 
         resizeCircle(timeDiff);
 
-        ctx.fillStyle = 'white';
-        ctx.globalAlpha = 1;
-        // ctx.fillStyle = color;
-        // ctx.globalAlpha = OPACITY;
+        ctx.fillStyle = color;
+        ctx.globalAlpha = OPACITY;
         
         ctx.clearRect(0, 0, size.width, size.height);
         ctx.beginPath();
