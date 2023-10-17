@@ -1,4 +1,4 @@
-import { prefersReducedMotion } from '../common';
+import { prefersReducedMotion, isPageReady, onPageReady } from '../common';
 
 export function useGlitch() {
     if (prefersReducedMotion) {
@@ -6,7 +6,7 @@ export function useGlitch() {
     }
 
     const DELAY = 100;
-    const ITERATIONS = 8;
+    const ITERATIONS = 12;
 
     const letters = [...document.querySelectorAll('[data-animation="glitch"]')].reduce((acc, letter) => {
         const { section } = letter.dataset;
@@ -16,6 +16,8 @@ export function useGlitch() {
         acc[section].push(letter);
         return acc;
     }, {});
+    
+    onPageReady(() => glitchSection('ai'));
 
     function glitchSection(section) {
         if (letters[section]) {

@@ -1,4 +1,4 @@
-import { blockScroll, unblockScroll, animate, pagePreloadEvent, pageReadyEvent } from '../common';
+import { blockScroll, unblockScroll, animate, pageReadyEvent } from '../common';
 
 import './style.scss';
 
@@ -39,7 +39,6 @@ export function usePreloader() {
     }
 
     function dispatchEvents() {
-        window.dispatchEvent(pagePreloadEvent);
         window.dispatchEvent(pageReadyEvent);
     }
 

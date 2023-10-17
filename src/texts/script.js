@@ -1,4 +1,4 @@
-import { prefersReducedMotion, animate } from '../common';
+import { prefersReducedMotion, animate, isPageReady, onPageReady } from '../common';
 
 import './style.scss';
 
@@ -23,7 +23,11 @@ export function useAppearByLine() {
         entries.forEach((entry) => {
             const { isIntersecting, target } = entry;
             if (isIntersecting) {
-                showLines(target);
+                if (isPageReady()) {
+                    showLines(target);
+                } else {
+                    onPageReady(() => showLines(target));
+                }
                 intersectionObserver.unobserve(target);
             }
         });
