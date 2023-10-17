@@ -61,6 +61,7 @@ export function usePreloader() {
                 if (!isMainPage) {
                     return removePreloader();
                 }
+                window.glitchSection?.('ai');
                 animate(preloader, { addClass: 'transparent' })
                     .then(removePreloader);
             });

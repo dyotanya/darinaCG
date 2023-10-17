@@ -65,5 +65,7 @@ export function useGlitch() {
         return arr.join('');
     }
 
+    window.glitchSection = glitchSection;
+
     return glitchSection;
 };
