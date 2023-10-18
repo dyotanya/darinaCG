@@ -1,0 +1,92 @@
+.popup-opened {
+    .desktopmenutrigger {
+        padding-right: var(--scroll-bar-width, 0);
+    }
+}
+
+[data-popup-id="desktop-menu"] {
+    --active-link-opacity: 0.6;
+    --transition-delay: calc(var(--transition-time) * 0.5);
+
+    &::before {
+        display: block;
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: var(--desktop-menu-color, var(--color));
+        transition: background-color var(--transition-time);
+    }
+
+    .desktopmenucontent {
+        position: relative;
+
+        &::before {
+            display: block;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: repeating-linear-gradient(to right, var(--white), var(--white) 1px, transparent 1px, transparent 6px);
+        }
+    }
+
+    .desktopmenulink {
+        .menulinkimage {
+            opacity: 0 !important;
+            transition: opacity var(--transition-time);
+        }
+
+        &:hover {
+            .menulinkimage {
+                opacity: 1 !important;
+            }
+        }
+    }
+
+    @media not (prefers-reduced-motion) {
+        opacity: 1 !important;
+    
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        
+        &:not(.hidden) {
+            transition: clip-path var(--transition-time) var(--besier-transition) !important;
+        }
+    
+        .desktopmenulinks {
+            --transition-delay: calc(var(--transition-time) * 0.5);
+    
+            li {
+                a {
+                    overflow: hidden;
+                }
+        
+                .burgermenulink {
+                    display: inline-block;
+                    transform: translateY(0);
+                    transition: transform var(--transition-time) ease;
+                }
+    
+                @for $i from 1 through 5 {
+                    &:nth-child(#{$i}) .burgermenulink {
+                        transition-delay: calc(var(--transition-delay) + $i * 0.05s);
+                    }
+                }
+            }
+        }
+    
+        &.transparent {
+            clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    
+            .desktopmenucontent {
+                li .burgermenulink {
+                    transform: translateY(100%);
+                }
+            }
+        }
+    }
+}

@@ -1,5 +1,6 @@
 import { useMenu } from "../src/menu/script";
 import { useNavbar } from "../src/navbar/script";
+import { useDesktopMenu } from "../src/desktopMenu/script";
 import { useParallaxingPhotos } from "../src/parallaxingPhotos/script";
 import { useGlitch } from "../src/glitch/script";
 import { useScrollColors } from "../src/colors/script";
@@ -53,6 +54,7 @@ function init() {
   useAppearByLine();
   useAppearFromBelow();
   useComingSoon();
+  useDesktopMenu();
   useNavbar();
   useTags();
   useRunningLine();

@@ -93,6 +93,14 @@
                     background-color: var(--color20) !important;
                 }
             }
+            .menubutton {
+                background-color: var(--color);
+                transition: background-color var(--transition-time);
+                
+                p {
+                    color: var(--white) !important;
+                }
+            }
             // TODO: remove with the "coming soon"
             .comingsoonform {
                 input[type="email"] {
@@ -109,6 +117,12 @@
             }
             .cominsoonprogress  {
                 background-color: var(--color);
+            }
+        }
+
+        .burgermenubutton {
+            p {
+                color: var(--color) !important;
             }
         }
         
