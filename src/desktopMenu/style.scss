@@ -21,6 +21,51 @@
         transition: background-color var(--transition-time);
     }
 
+    .burgersendmessagebtn {
+        position: relative;
+        overflow: hidden;
+        --hover-color: var(--desktop-menu-color, var(--color));
+    
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            z-index: 0;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--white);
+            transition: top 0.5s ease;
+        }
+
+        p {
+            transition: color var(--transition-time);
+            z-index: 1;
+        }
+        .entericonwrap {
+            z-index: 1;
+
+            path {
+                transition: fill var(--transition-time);
+            }
+        }
+
+        @media (hover: hover) {
+            &:hover {
+                p {
+                    color: var(--hover-color) !important;
+                }
+                path {
+                    fill: var(--hover-color) !important;
+                }
+                &::before {
+                    top: 0%;
+                }
+            }
+        }
+    }
+
     .desktopmenucontent {
         position: relative;
 

@@ -79,50 +79,17 @@
 
     &[data-page="main"] {
         .content {
-            *:not(.abouttag) {
-                color: var(--color);
-                border-color: var(--color) !important;
-            }
             path {
                 fill: var(--color);
             }
-            .keyboardletter {
-                border-color: var(--color20) !important;
-        
-                &.glitch {
-                    background-color: var(--color20) !important;
-                }
-            }
             .menubutton {
-                background-color: var(--color);
                 transition: background-color var(--transition-time);
-                
-                p {
-                    color: var(--white) !important;
-                }
             }
             // TODO: remove with the "coming soon"
             .comingsoonform {
-                input[type="email"] {
-                    border-color: var(--color50) !important;
-        
-                    &::placeholder {
-                        color: var(--color50);
-                    }
-                }
                 .comingsoonformbutton {
                     transition: background-color var(--transition-time);
-                    background-color: var(--color);
                 }
-            }
-            .cominsoonprogress  {
-                background-color: var(--color);
-            }
-        }
-
-        .burgermenubutton {
-            p {
-                color: var(--color) !important;
             }
         }
         
@@ -155,12 +122,6 @@
         .mobilemenu {
             .mobilemenubutton {
                 transition: background-color var(--transition-time);
-                background-color: var(--color);
-                border-color: transparent !important;
-        
-                p {
-                    color: var(--white);
-                }
             }
             .mobilemenuborder {
                 transition: border-color var(--transition-time);
@@ -172,11 +133,9 @@
         .mobilemenu {
             a, p, h1 {
                 transition: color var(--transition-time);
-                color: var(--menu-color);
             }
             .sendmessagebtn {
                 transition: border-color var(--transition-time);
-                border-color: var(--menu-color);
             }
             .fixedmenudots {
                 z-index: 1;
@@ -184,7 +143,6 @@
         
                 .fixedmenudot {
                     transition: background-color var(--transition-time);
-                    background-color: var(--menu-color);
                 }
             }
             .entericon path {
@@ -196,28 +154,13 @@
         .mobilemenu {
             border-color: var(--menu-color);
         }
-    }
 
-    &[data-page="ai"],
-    &[data-page="contact"],
-    &[data-page="3d"],
-    &[data-page="about"] {
-        *, a {
-            &:not([data-style*="preserve-color"]) {
-                color: var(--color);
-            }
-            &:not([data-style*="preserve-border-color"]) {
-                border-color: var(--color) !important;
-            }
-            [data-style*="preserve-color"] * {
-                color: inherit;
-            }
-            &[data-style*="set-background-color"] {
-                background-color: var(--color);
+        [data-popup-id="desktop-menu"] {
+            .textlink {
+                color: var(--white);
             }
         }
     }
-
 }
 
 
