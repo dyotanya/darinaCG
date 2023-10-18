@@ -6,6 +6,7 @@
 
 [data-popup-id="desktop-menu"] {
     --active-link-opacity: 0.6;
+    --transition-time: 1.2s;
     --transition-delay: calc(var(--transition-time) * 0.5);
 
     &::before {
@@ -54,7 +55,7 @@
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
         
         &:not(.hidden) {
-            transition: clip-path var(--transition-time) var(--besier-transition) !important;
+            transition: clip-path var(--transition-time) ease !important;
         }
     
         .desktopmenulinks {

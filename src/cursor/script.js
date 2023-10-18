@@ -7,7 +7,9 @@ export function useCursor() {
         return;
     }
     const wrapperStyles = getComputedStyle(document.querySelector('.wrapper'));
-    let color = wrapperStyles.getPropertyValue('--color') || wrapperStyles.getPropertyValue('--red') || '#bb4b36';
+    const getWrapperPropertyValue = (property = '--color') => wrapperStyles.getPropertyValue(property)
+    const getDefaultColor = () => getWrapperPropertyValue('--color') || getWrapperPropertyValue('--red') || '#bb4b36';
+    let color = getDefaultColor();
     const OPACITY = 0.4;
     const SPEED_COEFF = 0.01;
     const RADIUS = 12;
@@ -24,7 +26,16 @@ export function useCursor() {
     const interactiveElementSelectors = 'a, [data-animation="cursor-hover"], .portfolioimage';
     const elems = document.querySelectorAll(interactiveElementSelectors);
 
-    window.setCursorColor = (newColor) => color = newColor;
+    window.setCursorColor = (newColor) => {
+        if (newColor.includes('var')) {
+            const newColorValue = getWrapperPropertyValue(newColor.replace('var(', '').replace(')', ''));
+            if (newColorValue) {
+                color = newColorValue;
+                return;
+            }
+        }
+        color = newColor || getDefaultColor();
+    };
 
     const size = {
         width: window.innerWidth,

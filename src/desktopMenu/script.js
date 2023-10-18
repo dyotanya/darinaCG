@@ -24,5 +24,6 @@ export function useDesktopMenu() {
     function setColor(page = null) {
         const color = page && COLORS[page] ? COLORS[page] : '';
         menu.style.setProperty('--desktop-menu-color', color);
+        window.setCursorColor?.(color);
     }
 };
