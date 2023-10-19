@@ -120,22 +120,25 @@
         }
         
         .mobilemenu {
-            .mobilemenubutton {
+            .menubutton {
                 transition: background-color var(--transition-time);
             }
             .mobilemenuborder {
                 transition: border-color var(--transition-time);
-                border-color: var(--menu-color);
+                border-color: var(--color);
             }
         }
         
         .fixedmenu,
         .mobilemenu {
+            --color-transition-time: 0.25s;
+
             a, p, h1 {
-                transition: color var(--transition-time);
+                transition: color var(--color-transition-time);
             }
             .sendmessagebtn {
-                transition: border-color var(--transition-time);
+                color: var(--color);
+                transition: border-color var(--color-transition-time), color var(--color-transition-time);
             }
             .fixedmenudots {
                 z-index: 1;
@@ -149,10 +152,6 @@
                 transition: fill var(--transition-time);
                 fill: var(--menu-color);
             }
-        }
-        
-        .mobilemenu {
-            border-color: var(--menu-color);
         }
 
         [data-popup-id="desktop-menu"] {

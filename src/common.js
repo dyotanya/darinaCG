@@ -59,7 +59,7 @@ export const animate = (element, options) => {
 
     return new Promise((res) => {
         const onTransitionEnd = (event) => {
-            if (event && event.target !== element) {
+            if (event && (event.target !== element || event.pseudoElement)) {
                 return;
             }
             element.removeEventListener('transitionend', onTransitionEnd);
