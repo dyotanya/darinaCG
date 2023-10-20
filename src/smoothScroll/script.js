@@ -3,8 +3,8 @@ import SmoothScroll from "smoothscroll-for-websites";
 export function useSmoothScroll() {
     SmoothScroll({
         // Scrolling Core
-        animationTime    : 1400, // [ms]
-        stepSize         : 100, // [px]
+        animationTime    : 700, // [ms]
+        stepSize         : 120, // [px]
     
         // Acceleration
         accelerationDelta : 20,  // 50
@@ -21,7 +21,7 @@ export function useSmoothScroll() {
         pulseNormalize   : 1,
     
         // Other
-        touchpadSupport   : false, // ignore touchpad by default
+        touchpadSupport   : true, // ignore touchpad by default
         fixedBackground   : false, 
         excluded          : '' 
     });

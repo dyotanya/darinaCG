@@ -119,16 +119,6 @@
             }
         }
         
-        .mobilemenu {
-            .menubutton {
-                transition: background-color var(--transition-time);
-            }
-            .mobilemenuborder {
-                transition: border-color var(--transition-time);
-                border-color: var(--color);
-            }
-        }
-        
         .fixedmenu,
         .mobilemenu {
             --color-transition-time: 0.25s;
@@ -151,6 +141,22 @@
             .entericon path {
                 transition: fill var(--transition-time);
                 fill: var(--menu-color);
+            }
+        }
+        
+        .mobilemenu {
+            .menubutton {
+                transition: background-color var(--transition-time);
+            }
+            .mobilemenuborder {
+                transition: border-color var(--transition-time);
+                border-color: var(--color);
+            }
+        }
+
+        .fixedmenu {
+            .sendmessagebtn {
+                color: var(--menu-color);
             }
         }
 

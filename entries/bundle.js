@@ -4,7 +4,7 @@ import { useDesktopMenu } from "../src/desktopMenu/script";
 import { useParallaxingPhotos } from "../src/parallaxingPhotos/script";
 import { useGlitch } from "../src/glitch/script";
 import { useScrollColors } from "../src/colors/script";
-import { useCursor } from "../src/cursor/script";
+// import { useCursor } from "../src/cursor/script";
 import { useRunningLine } from "../src/runningLine/script";
 import { usePopups } from "../src/popups/script";
 import { useAppearByLine } from "../src/texts/script";
@@ -49,7 +49,7 @@ function init() {
   usePopups();
   useImageLoad();
   useParallaxingPhotos();
-  useCursor();
+  // useCursor();
   useRunningLine();
   useAppearByLine();
   useAppearFromBelow();
