@@ -2,16 +2,26 @@
   --page-transition: 1s var(--besier-transition);
 }
 
-html.is-changing .transition-main {
-  transition: transform var(--page-transition);
+html.is-changing {
+  .content,
+  .pagecontent,
+  .fixedmenucontent,
+  .fixedmenudots,
+  .desktopmenucontent,
+  .burgermenuwrapper {
+    transition: transform var(--page-transition);
+    transform: translateY(var(--translate, 0));
+  }
 }
 
-html.is-animating.is-leaving .transition-main {
-  transform: translateY(calc(1 * 10vh * var(--overlay-direction, 1)));
-}
+html.is-animating {
+  &.is-leaving {
+    --translate: calc(1 * 10vh * var(--overlay-direction, 1));
+  }
 
-html.is-animating.is-rendering .transition-main {
-  transform: translateY(calc(-1 * 10vh * var(--overlay-direction, 1)));
+  &.is-rendering {
+    --translate: calc(-1 * 10vh * var(--overlay-direction, 1));
+  }
 }
 
 .transition-overlay {
@@ -26,13 +36,25 @@ html.is-animating.is-rendering .transition-main {
   background-color: var(--page-color, #bb4b36);
   opacity: 0;
   transform: translate3d(0, calc(-1 * 100% * var(--overlay-direction, 1)), 0);
-  pointer-events: none;
 
   p {
     opacity: 0;
     color: var(--white);
-    font-family: 'Syne Variablefont Wght';
-    font-size: 1em;
+    font-family: 'Worksans Variablefont Wght', sans-serif;
+    font-size: 0.93vw;
+    font-weight: 400;
+    text-transform: uppercase;
+
+    @media screen and (max-width: 991px) {
+      font-size: 1.9;
+    }
+    @media screen and (max-width: 767px) {
+      font-size: 2vw;
+    }
+    @media screen and (max-width: 478px) {
+      font-size: 3.6vw;
+      font-weight: 500;
+    }
   }
 }
 

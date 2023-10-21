@@ -1,11 +1,6 @@
-import { getIsDesktop, useOnResize } from '../common';
+import { getIsDesktop, useOnResize, isPageReady, onPageReady } from '../common';
 
 import './style.scss';
-
-/*
-    Categories:
-    'ai', '3d', 'about', 'educational', 'shop', 'contact'
-*/
 
 export function useScrollColors(glitchSection, setMenuSection) {
     const wrapper = document.querySelector('.wrapper');
@@ -22,8 +17,11 @@ export function useScrollColors(glitchSection, setMenuSection) {
 
     useOnResize(init, getIsDesktop);
 
-    init(getIsDesktop());
-    setInitialState();
+    if (isPageReady()) {
+        init(getIsDesktop());
+    } else {
+        onPageReady(() => init(getIsDesktop()));
+    }
 
     function init(isDesktop) {
         topObserver && topObserver.disconnect();
