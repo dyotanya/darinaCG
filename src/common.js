@@ -114,3 +114,5 @@ export const onPageReady = (callback) => {
 };
 
 export const isPageReady = () => !isPreloading() && !isPageTransitioning();
+
+export const isMainPage = () => document.querySelector('.wrapper')?.dataset?.page === 'main';

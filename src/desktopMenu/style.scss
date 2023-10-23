@@ -70,7 +70,7 @@
         }
     }
 
-    .desktopmenucontent {
+    .desktopmenucenter {
         position: relative;
 
         &::before {
@@ -138,7 +138,7 @@
         &.transparent {
             clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
     
-            .desktopmenucontent {
+            .desktopmenucenter {
                 li .burgermenulink {
                     transform: translateY(100%);
                 }

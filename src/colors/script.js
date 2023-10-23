@@ -1,13 +1,19 @@
-import { getIsDesktop, useOnResize, isPageReady, onPageReady } from '../common';
+import { getIsDesktop, useOnResize, isPageReady, onPageReady, isMainPage } from '../common';
 
 import './style.scss';
 
 export function useScrollColors(glitchSection, setMenuSection) {
+    if (!isMainPage()) {
+        return;
+    }
+
     const wrapper = document.querySelector('.wrapper');
     const sectionBreaks = [...document.querySelectorAll('[data-animation="sections"]')]
         .filter((sectionBreak) => sectionBreak.dataset.section !== 'educational');  // TODO: remove with the "coming soon"
     const INITIAL_CHECK_MARGIN = 25;
     const SECTION_PREFIX = 'section-';
+    const colorIntersectionObserver = new IntersectionObserver(colorIntersectionHandler);
+    const colorChangingElements = document.querySelectorAll('.contentlink, .keyboardletter, .sectionheadingbreak');
 
     const sections = [...sectionBreaks].map((sectionBreak) => sectionBreak.dataset.section);
     
@@ -21,6 +27,17 @@ export function useScrollColors(glitchSection, setMenuSection) {
         init(getIsDesktop());
     } else {
         onPageReady(() => init(getIsDesktop()));
+    }
+    colorChangingElements.forEach((element) => colorIntersectionObserver.observe(element));
+
+    function colorIntersectionHandler(entries) {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('color-transition');
+            } else {
+                entry.target.classList.remove('color-transition');
+            }
+        });
     }
 
     function init(isDesktop) {

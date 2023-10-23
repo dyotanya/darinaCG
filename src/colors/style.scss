@@ -78,6 +78,10 @@
     }
 
     &[data-page="main"] {
+        .color-transition {
+            transition: color var(--transition-time), border-color var(--transition-time);
+        }
+
         .content {
             path {
                 fill: var(--color);
@@ -123,7 +127,7 @@
         .mobilemenu {
             --color-transition-time: 0.25s;
 
-            a, p, h1 {
+            a, p {
                 transition: color var(--color-transition-time);
             }
             .sendmessagebtn {
@@ -155,6 +159,10 @@
         }
 
         .fixedmenu {
+            h1 {
+                transition: color var(--color-transition-time);
+            }
+
             .sendmessagebtn {
                 color: var(--menu-color);
             }
