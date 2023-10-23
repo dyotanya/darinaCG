@@ -10,9 +10,13 @@ export function usePortfolioZoom() {
     const closeButton = popup.querySelector('.imagepopupclosebutton');
     const nextButton = popup.querySelector('.imagepopupbutton.next');
     const prevButton = popup.querySelector('.imagepopupbutton.prev');
-    const image = popup.querySelector('.imagepopupimage');
+    const imageElements = {
+        current: popup.querySelector('.imagepopupimage:not(.next)'),
+        next: popup.querySelector('.imagepopupimage.next'),
+    };
+    const loading = popup.querySelector('.imagepopuploading');
 
-    let currentIndex, currentSources;
+    let currentIndex, currentSources, isChanging = false;
 
     nextButton.addEventListener('click', nextImage);
     prevButton.addEventListener('click', prevImage);
@@ -34,7 +38,7 @@ export function usePortfolioZoom() {
     }
 
     function showPopup() {
-        animate(popup, { addClass: 'shown', timeout: 5 })
+        animate(popup, { removeClass: 'hidden', timeout: 5 })
             .then((popup) => popup.classList.add('visible'));
         document.documentElement.classList.add('popup-opened');
     }
@@ -42,7 +46,7 @@ export function usePortfolioZoom() {
     function hidePopup() {
         animate(popup, { removeClass: 'visible' })
             .then((popup) => {
-                popup.classList.remove('shown');
+                popup.classList.add('hidden');
                 document.documentElement.classList.remove('popup-opened');
             });
     }
@@ -51,7 +55,7 @@ export function usePortfolioZoom() {
         currentIndex = index;
         currentSources = sources;
 
-        showImage(index);
+        showImage(index, imageElements.current);
 
         showPopup();
         document.addEventListener('keydown', onKeyPress);
@@ -74,17 +78,48 @@ export function usePortfolioZoom() {
         }
     }
 
-    function showImage(index) {
+    function showImage(index, image = imageElements.next) {
         currentIndex = index;
-        image.setAttribute('src', currentSources[index]);
+        if (image === imageElements.current) {
+            return image.setAttribute('src', currentSources[index]);
+        }
+        isChanging = true;
+        imageElements.current.classList.remove('visible');
+
+        function onLoad() {
+            imageElements.next.removeEventListener('load', onLoad);
+            loading.classList.remove('visible');
+            animate(imageElements.next, { addClass: 'visible' })
+                .then(() => {
+                    const current = imageElements.current;
+                    imageElements.current = imageElements.next;
+                    imageElements.next = current;
+                    imageElements.current.classList.remove('next');
+                    imageElements.next.classList.add('next');
+                    isChanging = false;
+                });
+        }
+
+        imageElements.next.addEventListener('load', onLoad);
+        if (imageElements.next.getAttribute('src') === currentSources[index]) {
+            imageElements.next.setAttribute('src', '');
+        }
+        loading.classList.add('visible');
+        setTimeout(() => imageElements.next.setAttribute('src', currentSources[index]), 10);
     }
 
     function nextImage() {
+        if (isChanging) {
+            return;
+        }
         const newIndex = currentIndex < currentSources.length - 1 ? currentIndex + 1 : 0;
         showImage(newIndex);
     }
 
     function prevImage() {
+        if (isChanging) {
+            return;
+        }
         const newIndex = currentIndex > 0 ? currentIndex - 1 : currentSources.length - 1;
         showImage(newIndex);
     }
