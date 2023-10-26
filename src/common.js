@@ -1,3 +1,5 @@
+import Animation from "./animate/class";
+
 export const getScreenWidth = () => document.documentElement.clientWidth;
 
 export const getIsDesktop = () => getScreenWidth() > 991;
@@ -55,38 +57,11 @@ export const blockScroll = () => document.documentElement.classList.add('popup-o
 export const unblockScroll = () => document.documentElement.classList.remove('popup-opened');
 
 export const animate = (element, options) => {
-    const { addClass, removeClass, action, timeout } = options;
-
-    return new Promise((res) => {
-        const onTransitionEnd = (event) => {
-            if (event && (event.target !== element || event.pseudoElement)) {
-                return;
-            }
-            element.removeEventListener('transitionend', onTransitionEnd);
-            res(element);
-        };
-
-        if (timeout) {
-            setTimeout(() => {
-                res(element);
-            }, timeout);
-        } else {
-            element.addEventListener('transitionend', onTransitionEnd);
-        }
-
-        if (action) {
-            return action(element);
-        }
-
-        if (addClass) {
-            element.classList.add(addClass);
-        }
-
-        if (removeClass) {
-            element.classList.remove(removeClass);
-        }
-    });
+    const animation = new Animation(element, options);
+    return animation.promise;
 };
+
+export const animateWithBreak = (element, options) => new Animation(element, options);
 
 export const isPageTransitioning = () => document.documentElement.classList.contains('is-changing')
     || document.documentElement.classList.contains('is-animating')

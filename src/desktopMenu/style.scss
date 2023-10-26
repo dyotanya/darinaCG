@@ -92,15 +92,19 @@
         .menulinkimage {
             opacity: 0 !important;
             transition: opacity var(--transition-time);
+
+            &.shown {
+                opacity: 1 !important;
+            }
         }
 
         &:hover {
             p span {
                 opacity: 0.6;
             }
-            .menulinkimage {
-                opacity: 1 !important;
-            }
+            // .menulinkimage {
+            //     opacity: 1 !important;
+            // }
         }
     }
 
@@ -132,6 +136,20 @@
                         transition-delay: calc(var(--transition-delay) + $i * 0.05s);
                     }
                 }
+            }
+        }
+
+        .menulinkimage {
+            clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+
+            &.shown {
+                opacity: 1 !important;
+                transition: clip-path calc(var(--transition-time) / 2);
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+
+            &.hiding {
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
             }
         }
     
