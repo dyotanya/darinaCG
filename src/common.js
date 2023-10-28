@@ -91,3 +91,12 @@ export const onPageReady = (callback) => {
 export const isPageReady = () => !isPreloading() && !isPageTransitioning();
 
 export const isMainPage = () => document.querySelector('.wrapper')?.dataset?.page === 'main';
+
+export const isFrench = () => window.location.href.includes('/fr/');
+
+export const LANGUAGES = {
+    EN: 'EN',
+    FR: 'FR',
+};
+
+export const getLanguage = () => isFrench() ? LANGUAGES.FR : LANGUAGES.EN;

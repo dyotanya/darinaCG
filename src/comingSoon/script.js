@@ -1,10 +1,14 @@
-import { animate } from "../common";
+import { animate, LANGUAGES, getLanguage } from "../common";
 
 import './style.scss';
 
-const CATEGORIES = ['guides', 'tutorials', 'libraries', 'printed art', 'walpapers', 'cources', 'trainings'];
+const CATEGORIES = {
+    [LANGUAGES.EN]: ['guides', 'tutorials', 'libraries', 'printed art', 'walpapers', 'cources', 'trainings'],
+    [LANGUAGES.FR]: ['guides', 'tutorials', 'bibliothèques', 'art imprimé', "fonds d'écran", 'cours', 'formations'],
+};
 
 export function useComingSoon() {
+    const categories = CATEGORIES[getLanguage()];
     const progress = document.querySelector('.cominsoonprogress');
     if (!progress) {
         return;
@@ -33,8 +37,8 @@ export function useComingSoon() {
 
     function changeText(index = 0) {
         clearInterval(timeout);
-        text.textContent = CATEGORIES[index];
-        const nextIndex = index < CATEGORIES.length - 1 ? index + 1 : 0;
+        text.textContent = categories[index];
+        const nextIndex = index < categories.length - 1 ? index + 1 : 0;
         timeout = setTimeout(() => changeText(nextIndex), 500);
     }
 
