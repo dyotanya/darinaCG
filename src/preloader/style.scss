@@ -100,6 +100,10 @@ html {
 
         &-indent {
             text-indent: 50%;
+
+            &.fr {
+                text-indent: 25%;
+            }
         }
 
         span {
