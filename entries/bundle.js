@@ -18,6 +18,7 @@ import { usePortfolioSwitch } from "../src/portfolioSwitch/script";
 import { usePortfolioZoom } from "../src/portfolioZoom/script";
 import { useSmoothScroll } from "../src/smoothScroll/script";
 import { useImageLoad } from "../src/imageLoad/script";
+import { useLanguageSwitcher } from "../src/languageSwitcher/script";
 import { swup } from "../src/pageTransitions/script";
 
 import "../src/styles/common.scss";
@@ -41,6 +42,7 @@ function init() {
     unblockScroll();
   }
   window.setPreloader?.(60);
+  useLanguageSwitcher();
   useContentBlock();
   setScrollBarWidthListener();
   const setMenuSection = useMenu();
@@ -57,6 +59,7 @@ function init() {
   useDesktopMenu();
   useNavbar();
   useTags();
+  window.setPreloader?.(80);
   useRunningLine();
   useFlyingPhotos();
   useAboutSlideshow();
@@ -64,4 +67,5 @@ function init() {
   usePortfolioZoom();
   useParallaxingPhotos();
   useSmoothScroll();
+  window.setPreloader?.(90);
 }
