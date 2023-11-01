@@ -60,7 +60,6 @@
     }
 
     .mobilemenulanguages {
-        opacity: 0; // TODO: set to 1 when languages are added back
         transition: opacity var(--transition-time);
     }
 
@@ -85,7 +84,7 @@
             transform: translate(-50%) scale(0);
         }
 
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 991px) {
             .mobilemenulanguages {
                 opacity: 0;
                 pointer-events: none;
