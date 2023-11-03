@@ -20,6 +20,7 @@ import { useSmoothScroll } from "../src/smoothScroll/script";
 import { useImageLoad } from "../src/imageLoad/script";
 import { useLanguageSwitcher } from "../src/languageSwitcher/script";
 import { swup } from "../src/pageTransitions/script";
+import { useForms } from "../src/forms/script";
 
 import "../src/styles/common.scss";
 import "../src/styles/page.scss";
@@ -35,7 +36,10 @@ if (document.readyState === "complete") {
   document.addEventListener("DOMContentLoaded", () => init());
 }
 // Run after every additional navigation by swup
-swup?.hooks.on("page:view", () => init());
+swup?.hooks.on("page:view", () => {
+  init();
+  useForms();
+});
 
 function init() {
   if (!document.querySelector('.preloader')) {

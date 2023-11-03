@@ -35,7 +35,6 @@
   },
   "dependencies": {
     "@swup/head-plugin": "^2.1.2",
-    "@swup/scripts-plugin": "^2.0.0",
     "smoothscroll-for-websites": "^1.4.10",
     "swup": "^4.4.2"
   }

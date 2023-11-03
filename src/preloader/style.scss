@@ -61,7 +61,7 @@ html {
         transform: translateY(-0.25em);
         left: 1em;
 
-        transition: opacity var(--transition);
+        transition: opacity 0.6s var(--transition-function);
 
         &::before,
         &::after {
