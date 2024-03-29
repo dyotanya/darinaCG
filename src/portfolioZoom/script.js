@@ -25,7 +25,7 @@ export function usePortfolioZoom() {
     document.querySelectorAll('.portfoliocategory').forEach(initCategory);
 
     function initCategory(block) {
-        const images = block.querySelectorAll('.portfolioimage');
+        const images = block.querySelectorAll('img.portfolioimage');
         const sources = [...images].map((image) => image.getAttribute('src'));
 
         images.forEach((image, index) => {
