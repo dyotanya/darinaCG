@@ -39,7 +39,6 @@ export function useDesktopMenu() {
 
     function hideImage(img) {
         if (img.classList.contains('showing')) {
-            console.log('here')
             img.animation.break();
             img.classList.remove('showing');
         }

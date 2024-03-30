@@ -11,7 +11,7 @@ export function useParallaxingPhotos() {
     const PORTFOLIO_MAX_SHIFT = 10;
     const observer = new IntersectionObserver(handleIntersection);
     const resizeObserver = new ResizeObserver(handleResize);
-    const images = document.querySelectorAll('[data-animation="parallax"], .portfolioimage');
+    const images = document.querySelectorAll('[data-animation="parallax"], .portfolioimage:not([data-animation="no-parallax"])');
     const watching = new Set([]);
     let isHandlingScroll = false;
     
